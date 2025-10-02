@@ -1058,6 +1058,262 @@ padding: 25px;
 font-size: 36px;
 }
 }
+
+/* Modal de Verificação PCD */
+.pcd-modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.6);
+z-index: 1002;
+display: none;
+}
+
+.pcd-modal.show {
+display: flex;
+align-items: center;
+justify-content: center;
+animation: fadeIn 0.3s ease;
+}
+
+.pcd-content {
+background: white;
+width: 90%;
+max-width: 500px;
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.pcd-header {
+background: #007bff;
+color: white;
+padding: 25px;
+text-align: center;
+}
+
+.pcd-header h2 {
+margin: 0 0 10px 0;
+font-size: 22px;
+}
+
+.pcd-header p {
+margin: 0;
+font-size: 14px;
+opacity: 0.9;
+}
+
+.pcd-body {
+padding: 30px;
+}
+
+.pcd-explanation {
+background: #e3f2fd;
+padding: 20px;
+border-radius: 8px;
+margin-bottom: 25px;
+border-left: 4px solid #007bff;
+}
+
+.pcd-explanation p {
+margin: 0;
+color: #333;
+line-height: 1.5;
+}
+
+.pcd-options {
+display: flex;
+flex-direction: column;
+gap: 15px;
+margin-bottom: 25px;
+}
+
+.pcd-option {
+display: flex;
+align-items: center;
+padding: 20px;
+border: 2px solid #e0e0e0;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: white;
+}
+
+.pcd-option:hover {
+border-color: #007bff;
+background: #f8f9ff;
+}
+
+.pcd-option.selected {
+border-color: #007bff;
+background: #e3f2fd;
+}
+
+.pcd-option input[type="radio"] {
+margin-right: 15px;
+transform: scale(1.2);
+}
+
+.pcd-option-content {
+flex: 1;
+}
+
+.pcd-option-title {
+font-weight: bold;
+font-size: 16px;
+color: #333;
+margin-bottom: 5px;
+}
+
+.pcd-option-desc {
+font-size: 14px;
+color: #666;
+}
+
+.pcd-disability-selection {
+display: none;
+margin-top: 20px;
+padding: 20px;
+background: #f8f9fa;
+border-radius: 8px;
+border: 1px solid #e0e0e0;
+}
+
+.pcd-disability-selection.show {
+display: block;
+animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+from { opacity: 0; transform: translateY(-10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.disability-options {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.disability-option {
+display: flex;
+align-items: center;
+padding: 15px;
+border: 2px solid #e0e0e0;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: white;
+}
+
+.disability-option:hover {
+border-color: #28a745;
+background: #f8fff8;
+}
+
+.disability-option.selected {
+border-color: #28a745;
+background: #e8f5e8;
+}
+
+.disability-option input[type="radio"] {
+margin-right: 12px;
+}
+
+.disability-icon {
+font-size: 24px;
+margin-right: 12px;
+}
+
+.disability-label {
+font-weight: 500;
+color: #333;
+}
+
+.pcd-actions {
+display: flex;
+gap: 15px;
+margin-top: 25px;
+}
+
+.pcd-btn {
+flex: 1;
+padding: 15px;
+border: none;
+border-radius: 8px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.pcd-btn-secondary {
+background: #6c757d;
+color: white;
+}
+
+.pcd-btn-secondary:hover {
+background: #5a6268;
+}
+
+.pcd-btn-primary {
+background: #007bff;
+color: white;
+}
+
+.pcd-btn-primary:hover {
+background: #0056b3;
+}
+
+.pcd-btn:disabled {
+background: #ccc;
+cursor: not-allowed;
+}
+
+.privacy-note {
+margin-top: 20px;
+padding: 15px;
+background: #fff3cd;
+border: 1px solid #ffeaa7;
+border-radius: 8px;
+font-size: 12px;
+color: #856404;
+text-align: center;
+}
+
+.privacy-note strong {
+color: #533f03;
+}
+
+/* Responsividade PCD Modal mobile */
+@media (max-width: 768px) {
+.pcd-content {
+width: 95%;
+}
+
+.pcd-header {
+padding: 20px;
+}
+
+.pcd-body {
+padding: 20px;
+}
+
+.pcd-actions {
+flex-direction: column;
+gap: 10px;
+}
+
+.pcd-option {
+padding: 15px;
+}
+
+.disability-option {
+padding: 12px;
+}
+}
 </style>
 </head>
 <body>
@@ -1122,6 +1378,10 @@ font-size: 36px;
 <div class="order-summary">
 <h3>Resumo do Pedido</h3>
 <div id="orderSummary"></div>
+<div class="summary-item">
+<span>Taxa de Entrega:</span>
+<span id="deliveryFee">R$ 10,00</span>
+</div>
 <div class="summary-total">
 <span>Total: <span id="orderTotal">R$ 0,00</span></span>
 </div>
@@ -1174,7 +1434,79 @@ font-size: 36px;
 </div>
 </div>
 
-<button class="complete-order" onclick="completeOrder()">Confirmar Pedido</button>
+<button class="complete-order" onclick="proceedToPCDVerification()">Confirmar Pedido</button>
+</div>
+</div>
+</div>
+
+<!-- Modal PCD -->
+<div class="pcd-modal" id="pcdModal">
+<div class="pcd-content">
+<div class="pcd-header">
+<h2>♿ Verificação PCD</h2>
+<p>Para garantir benefícios exclusivos, confirme se você é Pessoa com Deficiência.</p>
+</div>
+<div class="pcd-body">
+<div class="pcd-explanation">
+<p>Benefícios para PCD: <strong>Entrega GRÁTIS</strong> e <strong>descontos especiais</strong>. Suas informações são protegidas pela LGPD.</p>
+</div>
+
+<div class="pcd-options">
+<div class="pcd-option" onclick="selectPCDOption('yes')">
+<input type="radio" name="pcd" value="yes" id="pcd-yes">
+<div class="pcd-option-content">
+<div class="pcd-option-title">Sim, sou PCD</div>
+<div class="pcd-option-desc">Tenho deficiência física, visual, auditiva, mental ou múltipla.</div>
+</div>
+</div>
+<div class="pcd-option" onclick="selectPCDOption('no')">
+<input type="radio" name="pcd" value="no" id="pcd-no">
+<div class="pcd-option-content">
+<div class="pcd-option-title">Não sou PCD</div>
+<div class="pcd-option-desc">Não me enquadro nos critérios de Pessoa com Deficiência.</div>
+</div>
+</div>
+</div>
+
+<div class="pcd-disability-selection" id="disabilitySelection">
+<h4>Selecione o tipo de deficiência:</h4>
+<div class="disability-options">
+<div class="disability-option" onclick="selectDisability('fisica')">
+<input type="radio" name="disability" value="fisica" id="disability-fisica">
+<span class="disability-icon">🦽</span>
+<span class="disability-label">Deficiência Física</span>
+</div>
+<div class="disability-option" onclick="selectDisability('visual')">
+<input type="radio" name="disability" value="visual" id="disability-visual">
+<span class="disability-icon">🦯</span>
+<span class="disability-label">Deficiência Visual</span>
+</div>
+<div class="disability-option" onclick="selectDisability('auditiva')">
+<input type="radio" name="disability" value="auditiva" id="disability-auditiva">
+<span class="disability-icon">👂</span>
+<span class="disability-label">Deficiência Auditiva</span>
+</div>
+<div class="disability-option" onclick="selectDisability('mental')">
+<input type="radio" name="disability" value="mental" id="disability-mental">
+<span class="disability-icon">🧠</span>
+<span class="disability-label">Deficiência Intelectual/Mental</span>
+</div>
+<div class="disability-option" onclick="selectDisability('multipla')">
+<input type="radio" name="disability" value="multipla" id="disability-multipla">
+<span class="disability-icon">♿</span>
+<span class="disability-label">Deficiência Múltipla</span>
+</div>
+</div>
+</div>
+
+<div class="pcd-actions">
+<button class="pcd-btn pcd-btn-secondary" onclick="closePCDModal()">Cancelar</button>
+<button class="pcd-btn pcd-btn-primary" id="confirmPCDBtn" onclick="confirmPCDSelection()" disabled>Confirmar</button>
+</div>
+
+<div class="privacy-note">
+<strong>Privacidade:</strong> Seus dados são protegidos e usados apenas para benefícios PCD. <a href="#" style="color: #856404;">Saiba mais</a>.
+</div>
 </div>
 </div>
 </div>
@@ -3965,6 +4297,10 @@ font-size: 36px;
 let cart = [];
 let cartCount = 0;
 let selectedBrands = {};
+let selectedPaymentMethod = '';
+let isPCD = false;
+let disabilityType = '';
+let deliveryFee = 10.00;
 
 // Função para selecionar marca
 function selectBrand(productId, brandName, price) {
@@ -4248,23 +4584,35 @@ document.getElementById('checkoutModal').classList.remove('show');
 
 function updateOrderSummary() {
 const orderSummary = document.getElementById('orderSummary');
+const deliveryFeeElement = document.getElementById('deliveryFee');
 const orderTotal = document.getElementById('orderTotal');
 
 let summaryHTML = '';
-let total = 0;
+let subtotal = 0;
 
 cart.forEach(item => {
-const subtotal = item.price * item.quantity;
-total += subtotal;
+const itemSubtotal = item.price * item.quantity;
+subtotal += itemSubtotal;
 summaryHTML += `
 <div class="summary-item">
 <span>${item.name} (${item.quantity}x)</span>
-<span>R$ ${subtotal.toFixed(2)}</span>
+<span>R$ ${itemSubtotal.toFixed(2)}</span>
 </div>
 `;
 });
 
+const currentDeliveryFee = isPCD ? 0 : deliveryFee;
+const total = subtotal + currentDeliveryFee;
+
+summaryHTML += `
+<div class="summary-item">
+<span>Subtotal:</span>
+<span>R$ ${subtotal.toFixed(2)}</span>
+</div>
+`;
+
 orderSummary.innerHTML = summaryHTML;
+deliveryFeeElement.textContent = currentDeliveryFee > 0 ? `R$ ${currentDeliveryFee.toFixed(2)}` : 'GRÁTIS (PCD)';
 orderTotal.textContent = `R$ ${total.toFixed(2)}`;
 }
 
@@ -4277,6 +4625,7 @@ pm.classList.remove('selected');
 // Selecionar método atual
 document.querySelector(`#${method}`).checked = true;
 document.querySelector(`#${method}`).closest('.payment-method').classList.add('selected');
+selectedPaymentMethod = method;
 
 // Mostrar/esconder formulários
 const cardForm = document.getElementById('cardForm');
@@ -4289,6 +4638,97 @@ pixForm.style.display = 'none';
 cardForm.style.display = 'none';
 pixForm.style.display = 'block';
 }
+}
+
+// Variáveis PCD
+// ... (já declaradas globalmente acima)
+
+// Função para prosseguir para verificação PCD
+function proceedToPCDVerification() {
+    // Validar campos obrigatórios (adicionar campos de entrega se necessário, mas como não estão no HTML atual, assumimos que são opcionais ou implícitos)
+    if (!selectedPaymentMethod) {
+        alert('Por favor, selecione uma forma de pagamento!');
+        return;
+    }
+    
+    // Validar campos do cartão se necessário
+    if (selectedPaymentMethod === 'credit' || selectedPaymentMethod === 'debit') {
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const cardName = document.getElementById('cardName').value.trim();
+        const cardExpiry = document.getElementById('cardExpiry').value.trim();
+        const cardCvv = document.getElementById('cardCvv').value.trim();
+        
+        if (!cardNumber || !cardName || !cardExpiry || !cardCvv) {
+            alert('Por favor, preencha todos os dados do cartão!');
+            return;
+        }
+    }
+    
+    // Fechar checkout e abrir modal PCD
+    closeCheckout();
+    document.getElementById('pcdModal').classList.add('show');
+}
+
+// Função para selecionar opção PCD
+function selectPCDOption(option) {
+    // Remover seleção anterior
+    document.querySelectorAll('.pcd-option').forEach(opt => opt.classList.remove('selected'));
+    
+    // Adicionar seleção atual
+    event.target.closest('.pcd-option').classList.add('selected');
+    
+    // Marcar radio button
+    document.getElementById(`pcd-${option}`).checked = true;
+    isPCD = option === 'yes';
+    
+    // Mostrar/esconder seleção de deficiência
+    const disabilitySelection = document.getElementById('disabilitySelection');
+    if (isPCD) {
+        disabilitySelection.classList.add('show');
+        document.getElementById('confirmPCDBtn').disabled = true;
+    } else {
+        disabilitySelection.classList.remove('show');
+        document.getElementById('confirmPCDBtn').disabled = false;
+        disabilityType = '';
+    }
+}
+
+// Função para selecionar tipo de deficiência
+function selectDisability(type) {
+    // Remover seleção anterior
+    document.querySelectorAll('.disability-option').forEach(opt => opt.classList.remove('selected'));
+    
+    // Adicionar seleção atual
+    event.target.closest('.disability-option').classList.add('selected');
+    
+    // Marcar radio button
+    document.getElementById(`disability-${type}`).checked = true;
+    disabilityType = type;
+    
+    // Habilitar botão de confirmação
+    document.getElementById('confirmPCDBtn').disabled = false;
+}
+
+// Função para confirmar seleção PCD
+function confirmPCDSelection() {
+    if (isPCD && !disabilityType) {
+        alert('Por favor, selecione o tipo de deficiência!');
+        return;
+    }
+    
+    // Atualizar taxa de entrega
+    deliveryFee = isPCD ? 0 : 10.00;
+    
+    // Fechar modal PCD
+    closePCDModal();
+    
+    // Finalizar pedido
+    completeOrder();
+}
+
+// Função para fechar modal PCD
+function closePCDModal() {
+    document.getElementById('pcdModal').classList.remove('show');
 }
 
 function completeOrder() {
@@ -4314,9 +4754,16 @@ return;
 }
 
 // Simular processamento do pedido
-const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+const currentDeliveryFee = isPCD ? 0 : deliveryFee;
+const total = subtotal + currentDeliveryFee;
 
-alert(`Pedido confirmado com sucesso!\n\nTotal: R$ ${total.toFixed(2)}\nForma de pagamento: ${getPaymentMethodName(paymentMethod)}\n\nObrigado pela preferência!`);
+let pcdInfo = '';
+if (isPCD) {
+pcdInfo = `\nPCD: ${disabilityType.toUpperCase()} - Entrega GRÁTIS!`;
+}
+
+alert(`Pedido confirmado com sucesso!\n\nSubtotal: R$ ${subtotal.toFixed(2)}\nTaxa de Entrega: ${currentDeliveryFee > 0 ? `R$ ${currentDeliveryFee.toFixed(2)}` : 'GRÁTIS'}${pcdInfo}\n\nTotal: R$ ${total.toFixed(2)}\nForma de pagamento: ${getPaymentMethodName(paymentMethod)}\n\nObrigado pela preferência!`);
 
 // Limpar carrinho e fechar modais
 cart = [];
@@ -4394,6 +4841,9 @@ closeCart();
 }
 if (e.target.classList.contains('checkout-modal')) {
 closeCheckout();
+}
+if (e.target.classList.contains('pcd-modal')) {
+closePCDModal();
 }
 });
 
