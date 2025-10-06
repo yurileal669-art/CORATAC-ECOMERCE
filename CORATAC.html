@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -1058,6 +1059,262 @@ padding: 25px;
 font-size: 36px;
 }
 }
+
+/* Modal de Verificação PCD */
+.pcd-modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.6);
+z-index: 1002;
+display: none;
+}
+
+.pcd-modal.show {
+display: flex;
+align-items: center;
+justify-content: center;
+animation: fadeIn 0.3s ease;
+}
+
+.pcd-content {
+background: white;
+width: 90%;
+max-width: 500px;
+border-radius: 15px;
+overflow: hidden;
+box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.pcd-header {
+background: #007bff;
+color: white;
+padding: 25px;
+text-align: center;
+}
+
+.pcd-header h2 {
+margin: 0 0 10px 0;
+font-size: 22px;
+}
+
+.pcd-header p {
+margin: 0;
+font-size: 14px;
+opacity: 0.9;
+}
+
+.pcd-body {
+padding: 30px;
+}
+
+.pcd-explanation {
+background: #e3f2fd;
+padding: 20px;
+border-radius: 8px;
+margin-bottom: 25px;
+border-left: 4px solid #007bff;
+}
+
+.pcd-explanation p {
+margin: 0;
+color: #333;
+line-height: 1.5;
+}
+
+.pcd-options {
+display: flex;
+flex-direction: column;
+gap: 15px;
+margin-bottom: 25px;
+}
+
+.pcd-option {
+display: flex;
+align-items: center;
+padding: 20px;
+border: 2px solid #e0e0e0;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: white;
+}
+
+.pcd-option:hover {
+border-color: #007bff;
+background: #f8f9ff;
+}
+
+.pcd-option.selected {
+border-color: #007bff;
+background: #e3f2fd;
+}
+
+.pcd-option input[type="radio"] {
+margin-right: 15px;
+transform: scale(1.2);
+}
+
+.pcd-option-content {
+flex: 1;
+}
+
+.pcd-option-title {
+font-weight: bold;
+font-size: 16px;
+color: #333;
+margin-bottom: 5px;
+}
+
+.pcd-option-desc {
+font-size: 14px;
+color: #666;
+}
+
+.pcd-disability-selection {
+display: none;
+margin-top: 20px;
+padding: 20px;
+background: #f8f9fa;
+border-radius: 8px;
+border: 1px solid #e0e0e0;
+}
+
+.pcd-disability-selection.show {
+display: block;
+animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+from { opacity: 0; transform: translateY(-10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.disability-options {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.disability-option {
+display: flex;
+align-items: center;
+padding: 15px;
+border: 2px solid #e0e0e0;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: white;
+}
+
+.disability-option:hover {
+border-color: #28a745;
+background: #f8fff8;
+}
+
+.disability-option.selected {
+border-color: #28a745;
+background: #e8f5e8;
+}
+
+.disability-option input[type="radio"] {
+margin-right: 12px;
+}
+
+.disability-icon {
+font-size: 24px;
+margin-right: 12px;
+}
+
+.disability-label {
+font-weight: 500;
+color: #333;
+}
+
+.pcd-actions {
+display: flex;
+gap: 15px;
+margin-top: 25px;
+}
+
+.pcd-btn {
+flex: 1;
+padding: 15px;
+border: none;
+border-radius: 8px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.pcd-btn-secondary {
+background: #6c757d;
+color: white;
+}
+
+.pcd-btn-secondary:hover {
+background: #5a6268;
+}
+
+.pcd-btn-primary {
+background: #007bff;
+color: white;
+}
+
+.pcd-btn-primary:hover {
+background: #0056b3;
+}
+
+.pcd-btn:disabled {
+background: #ccc;
+cursor: not-allowed;
+}
+
+.privacy-note {
+margin-top: 20px;
+padding: 15px;
+background: #fff3cd;
+border: 1px solid #ffeaa7;
+border-radius: 8px;
+font-size: 12px;
+color: #856404;
+text-align: center;
+}
+
+.privacy-note strong {
+color: #533f03;
+}
+
+/* Responsividade PCD Modal mobile */
+@media (max-width: 768px) {
+.pcd-content {
+width: 95%;
+}
+
+.pcd-header {
+padding: 20px;
+}
+
+.pcd-body {
+padding: 20px;
+}
+
+.pcd-actions {
+flex-direction: column;
+gap: 10px;
+}
+
+.pcd-option {
+padding: 15px;
+}
+
+.disability-option {
+padding: 12px;
+}
+}
 </style>
 </head>
 <body>
@@ -1065,7 +1322,7 @@ font-size: 36px;
 <div class="entry-screen" id="entryScreen">
 <div class="entry-container">
 <h1>🛒 CORATAC</h1>
-<p><strong>BEM-VINDO AO MAIS NOVO SUPERMERCADO E-COMMERCE DA REGIÃO!</strong></p>
+<p><b>BEM-VINDO AO MAIS NOVO SUPERMERCADO E-COMERCE DA REGIÃO!</b></p>
 <button class="entry-btn" onclick="enterSite()">ENTRAR NA LOJA</button>
 </div>
 </div>
@@ -1122,6 +1379,10 @@ font-size: 36px;
 <div class="order-summary">
 <h3>Resumo do Pedido</h3>
 <div id="orderSummary"></div>
+<div class="summary-item">
+<span>Taxa de Entrega:</span>
+<span id="deliveryFee">R$ 10,00</span>
+</div>
 <div class="summary-total">
 <span>Total: <span id="orderTotal">R$ 0,00</span></span>
 </div>
@@ -1174,7 +1435,79 @@ font-size: 36px;
 </div>
 </div>
 
-<button class="complete-order" onclick="completeOrder()">Confirmar Pedido</button>
+<button class="complete-order" onclick="proceedToPCDVerification()">Confirmar Pedido</button>
+</div>
+</div>
+</div>
+
+<!-- Modal PCD -->
+<div class="pcd-modal" id="pcdModal">
+<div class="pcd-content">
+<div class="pcd-header">
+<h2>♿ Verificação PCD</h2>
+<p>Para garantir benefícios exclusivos, confirme se você é Pessoa com Deficiência.</p>
+</div>
+<div class="pcd-body">
+<div class="pcd-explanation">
+<p>Benefícios para PCD: <strong>Entrega GRÁTIS</strong> e <strong>descontos especiais</strong>. Suas informações são protegidas pela LGPD.</p>
+</div>
+
+<div class="pcd-options">
+<div class="pcd-option" onclick="selectPCDOption('yes')">
+<input type="radio" name="pcd" value="yes" id="pcd-yes">
+<div class="pcd-option-content">
+<div class="pcd-option-title">Sim, sou PCD</div>
+<div class="pcd-option-desc">Tenho deficiência física, visual, auditiva, mental ou múltipla.</div>
+</div>
+</div>
+<div class="pcd-option" onclick="selectPCDOption('no')">
+<input type="radio" name="pcd" value="no" id="pcd-no">
+<div class="pcd-option-content">
+<div class="pcd-option-title">Não sou PCD</div>
+<div class="pcd-option-desc">Não me enquadro nos critérios de Pessoa com Deficiência.</div>
+</div>
+</div>
+</div>
+
+<div class="pcd-disability-selection" id="disabilitySelection">
+<h4>Selecione o tipo de deficiência:</h4>
+<div class="disability-options">
+<div class="disability-option" onclick="selectDisability('fisica')">
+<input type="radio" name="disability" value="fisica" id="disability-fisica">
+<span class="disability-icon">🦽</span>
+<span class="disability-label">Deficiência Física</span>
+</div>
+<div class="disability-option" onclick="selectDisability('visual')">
+<input type="radio" name="disability" value="visual" id="disability-visual">
+<span class="disability-icon">🦯</span>
+<span class="disability-label">Deficiência Visual</span>
+</div>
+<div class="disability-option" onclick="selectDisability('auditiva')">
+<input type="radio" name="disability" value="auditiva" id="disability-auditiva">
+<span class="disability-icon">👂</span>
+<span class="disability-label">Deficiência Auditiva</span>
+</div>
+<div class="disability-option" onclick="selectDisability('mental')">
+<input type="radio" name="disability" value="mental" id="disability-mental">
+<span class="disability-icon">🧠</span>
+<span class="disability-label">Deficiência Intelectual/Mental</span>
+</div>
+<div class="disability-option" onclick="selectDisability('multipla')">
+<input type="radio" name="disability" value="multipla" id="disability-multipla">
+<span class="disability-icon">♿</span>
+<span class="disability-label">Deficiência Múltipla</span>
+</div>
+</div>
+</div>
+
+<div class="pcd-actions">
+<button class="pcd-btn pcd-btn-secondary" onclick="closePCDModal()">Cancelar</button>
+<button class="pcd-btn pcd-btn-primary" id="confirmPCDBtn" onclick="confirmPCDSelection()" disabled>Confirmar</button>
+</div>
+
+<div class="privacy-note">
+<strong>Privacidade:</strong> Seus dados são protegidos e usados apenas para benefícios PCD. <a href="#" style="color: #856404;">Saiba mais</a>.
+</div>
 </div>
 </div>
 </div>
@@ -1366,6 +1699,44 @@ font-size: 36px;
 <div class="selected-brand" id="selected-leite-po" style="display: none;">
 <p><strong>Selecionado:</strong> <span id="brand-name-leite-po"></span> - <span id="brand-price-leite-po"></span></p>
 <button class="add-to-cart-btn" onclick="addSelectedToCart('leite-po')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Achocolatados -->
+<div class="product-card">
+<h3>ACHOCOLATADOS</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('achocolatados', 'Nescau 2.0', 8.90)">
+<span class="brand-name">Nescau 2.0</span>
+<span class="brand-price">R$ 8,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('achocolatados', 'Toddy original', 7.50)">
+<span class="brand-name">Toddy original</span>
+<span class="brand-price">R$ 7,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('achocolatados', 'Ovomaltine clássico', 12.30)">
+<span class="brand-name">Ovomaltine clássico</span>
+<span class="brand-price">R$ 12,30</span>
+</div>
+<div class="brand-item" onclick="selectBrand('achocolatados', 'NESCAU 350g', 3.50)">
+<span class="brand-name">NESCAU 350g</span>
+<span class="brand-price">R$ 3,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('achocolatados', 'PIRA KIDS 1L', 7.00)">
+<span class="brand-name">PIRA KIDS 1L</span>
+<span class="brand-price">R$ 7,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('achocolatados', 'PIRA KIDS 200g', 5.50)">
+<span class="brand-name">PIRA KIDS 200g</span>
+<span class="brand-price">R$ 5,50</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-achocolatados" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-achocolatados"></span> - <span id="brand-price-achocolatados"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('achocolatados')">Adicionar ao Carrinho</button>
 </div>
 </div>
 
@@ -1797,6 +2168,8 @@ font-size: 36px;
 </div>
 </div>
 
+
+
 <!-- Creme de Leite -->
 <div class="product-card">
 <h3>CREME DE LEITE</h3>
@@ -2187,6 +2560,32 @@ font-size: 36px;
 </div>
 </div>
 
+<!-- Salgadinho -->
+<div class="product-card">
+<h3>SALGADINHO</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('salgadinho', 'PRINGLES 10g', 9.99)">
+<span class="brand-name">PRINGLES 10g</span>
+<span class="brand-price">R$ 9,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('salgadinho', 'DORITOS 75g', 10.99)">
+<span class="brand-name">DORITOS 75g</span>
+<span class="brand-price">R$ 10,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('salgadinho', 'PIPOCA 15g', 1.00)">
+<span class="brand-name">PIPOCA 15g</span>
+<span class="brand-price">R$ 1,00</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-salgadinho" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-salgadinho"></span> - <span id="brand-price-salgadinho"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('salgadinho')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
 <!-- Sal -->
 <div class="product-card">
 <h3>SAL</h3>
@@ -2349,6 +2748,32 @@ font-size: 36px;
 <button class="add-to-cart-btn" onclick="addSelectedToCart('pipoca-doce')">Adicionar ao Carrinho</button>
 </div>
 </div>
+
+<!-- Tortilhas -->
+<div class="product-card">
+<h3>TORTILHAS</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('tortilhas', 'Tortilha de trigo Mission', 8.90)">
+<span class="brand-name">Tortilha de trigo Mission</span>
+<span class="brand-price">R$ 8,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('tortilhas', 'Tortilha de milho Old El Paso', 9.50)">
+<span class="brand-name">Tortilha de milho Old El Paso</span>
+<span class="brand-price">R$ 9,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('tortilhas', 'Tortilha integral Wickbold', 12.20)">
+<span class="brand-name">Tortilha integral Wickbold</span>
+<span class="brand-price">R$ 12,20</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-tortilhas" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-tortilhas"></span> - <span id="brand-price-tortilhas"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('tortilhas')">Adicionar ao Carrinho</button>
+</div>
+</div>
 </div>
 </section>
 
@@ -2357,44 +2782,6 @@ font-size: 36px;
 <h2>CHOCOLATES</h2>
 
 <div class="products-grid">
-<!-- Achocolatados -->
-<div class="product-card">
-<h3>ACHOCOLATADOS</h3>
-<div class="product-examples">
-<h4>Escolha a marca:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('achocolatados', 'Nescau 2.0', 8.90)">
-<span class="brand-name">Nescau 2.0</span>
-<span class="brand-price">R$ 8,90</span>
-</div>
-<div class="brand-item" onclick="selectBrand('achocolatados', 'Toddy original', 7.50)">
-<span class="brand-name">Toddy original</span>
-<span class="brand-price">R$ 7,50</span>
-</div>
-<div class="brand-item" onclick="selectBrand('achocolatados', 'Ovomaltine clássico', 12.30)">
-<span class="brand-name">Ovomaltine clássico</span>
-<span class="brand-price">R$ 12,30</span>
-</div>
-<div class="brand-item" onclick="selectBrand('achocolatados', 'NESCAU 350g', 3.50)">
-<span class="brand-name">NESCAU 350g</span>
-<span class="brand-price">R$ 3,50</span>
-</div>
-<div class="brand-item" onclick="selectBrand('achocolatados', 'PIRA KIDS 1L', 7.00)">
-<span class="brand-name">PIRA KIDS 1L</span>
-<span class="brand-price">R$ 7,00</span>
-</div>
-<div class="brand-item" onclick="selectBrand('achocolatados', 'PIRA KIDS 200g', 5.50)">
-<span class="brand-name">PIRA KIDS 200g</span>
-<span class="brand-price">R$ 5,50</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-achocolatados" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-achocolatados"></span> - <span id="brand-price-achocolatados"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('achocolatados')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
 <!-- Barras de Chocolate -->
 <div class="product-card">
 <h3>BARRAS DE CHOCOLATE</h3>
@@ -2438,363 +2825,6 @@ font-size: 36px;
 <div class="selected-brand" id="selected-barras-chocolate" style="display: none;">
 <p><strong>Selecionado:</strong> <span id="brand-name-barras-chocolate"></span> - <span id="brand-price-barras-chocolate"></span></p>
 <button class="add-to-cart-btn" onclick="addSelectedToCart('barras-chocolate')">Adicionar ao Carrinho</button>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Categoria Bebidas -->
-<section class="categoria" id="bebidas">
-<h2>BEBIDAS</h2>
-
-<div class="products-grid">
-<!-- Fanta Uva Pet 200ml -->
-<div class="product-card">
-<h3>FANTA UVA PET 200ML</h3>
-<div class="product-examples">
-<h4>Produto:</h4>
-<ul>
-<li>Fanta Uva Pet | Peso: 200ml</li>
-</ul>
-</div>
-<button class="add-to-cart-btn" onclick="addToCart('fanta-uva-200ml', 'Fanta Uva Pet 200ml', 1.99)">Adicionar ao Carrinho - R$ 1,99</button>
-</div>
-
-<!-- Pepsi Zero Pet 200ml -->
-<div class="product-card">
-<h3>PEPSI ZERO PET 200ML</h3>
-<div class="product-examples">
-<h4>Produto:</h4>
-<ul>
-<li>Pepsi Zero Pet | Peso: 200ml</li>
-</ul>
-</div>
-<button class="add-to-cart-btn" onclick="addToCart('pepsi-zero-200ml', 'Pepsi Zero Pet 200ml', 1.99)">Adicionar ao Carrinho - R$ 1,99</button>
-</div>
-
-<!-- Coca-Cola Lata 220ml -->
-<div class="product-card">
-<h3>COCA-COLA LATA 220ML</h3>
-<div class="product-examples">
-<h4>Produto:</h4>
-<ul>
-<li>Coca-Cola | Peso: 220ml</li>
-</ul>
-</div>
-<button class="add-to-cart-btn" onclick="addToCart('coca-cola-220ml', 'Coca-Cola 220ml', 2.50)">Adicionar ao Carrinho - R$ 2,50</button>
-</div>
-
-<!-- Fanta Uva Lata 220ml -->
-<div class="product-card">
-<h3>FANTA UVA LATA 220ML</h3>
-<div class="product-examples">
-<h4>Produto:</h4>
-<ul>
-<li>Fanta Uva | Peso: 220ml</li>
-</ul>
-</div>
-<button class="add-to-cart-btn" onclick="addToCart('fanta-uva-220ml', 'Fanta Uva 220ml', 2.50)">Adicionar ao Carrinho - R$ 2,50</button>
-</div>
-
-<!-- Fanta Laranja Lata 220ml -->
-<div class="product-card">
-<h3>FANTA LARANJA LATA 220ML</h3>
-<div class="product-examples">
-<h4>Produto:</h4>
-<ul>
-<li>Fanta Laranja | Peso: 220ml</li>
-</ul>
-</div>
-<button class="add-to-cart-btn" onclick="addToCart('fanta-laranja-220ml', 'Fanta Laranja 220ml', 2.50)">Adicionar ao Carrinho - R$ 2,50</button>
-</div>
-
-<!-- Refrigerante 269ml -->
-<div class="product-card">
-<h3>REFRIGERANTE 269ML</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('refrigerante-269ml', 'Guaraná Antarctica 269ml', 2.60)">
-<span class="brand-name">Guaraná Antarctica 269ml</span>
-<span class="brand-price">R$ 2,60</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-refrigerante-269ml" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-269ml"></span> - <span id="brand-price-refrigerante-269ml"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-269ml')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Refrigerante 350ml -->
-<div class="product-card">
-<h3>REFRIGERANTE 350ML</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Coca-Cola 350ml', 3.60)">
-<span class="brand-name">Coca-Cola 350ml</span>
-<span class="brand-price">R$ 3,60</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Coca-Cola Zero 350ml', 3.89)">
-<span class="brand-name">Coca-Cola Zero 350ml</span>
-<span class="brand-price">R$ 3,89</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Fanta Uva 350ml', 3.49)">
-<span class="brand-name">Fanta Uva 350ml</span>
-<span class="brand-price">R$ 3,49</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Fanta Laranja 350ml', 3.49)">
-<span class="brand-name">Fanta Laranja 350ml</span>
-<span class="brand-price">R$ 3,49</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Baré 350ml', 3.19)">
-<span class="brand-name">Baré 350ml</span>
-<span class="brand-price">R$ 3,19</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Tuchaua 350ml', 3.19)">
-<span class="brand-name">Tuchaua 350ml</span>
-<span class="brand-price">R$ 3,19</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Guaraná Antarctica 350ml', 3.19)">
-<span class="brand-name">Guaraná Antarctica 350ml</span>
-<span class="brand-price">R$ 3,19</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Sprite 350ml', 3.19)">
-<span class="brand-name">Sprite 350ml</span>
-<span class="brand-price">R$ 3,19</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Soda Refrigerante 350ml', 3.19)">
-<span class="brand-name">Soda Refrigerante 350ml</span>
-<span class="brand-price">R$ 3,19</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Pepsi Zero 350ml', 3.19)">
-<span class="brand-name">Pepsi Zero 350ml</span>
-<span class="brand-price">R$ 3,19</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-refrigerante-350ml" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-350ml"></span> - <span id="brand-price-refrigerante-350ml"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-350ml')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Refrigerante 500ml -->
-<div class="product-card">
-<h3>REFRIGERANTE 500ML</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('refrigerante-500ml', 'Alegria Laranja 500ml', 3.49)">
-<span class="brand-name">Alegria Laranja 500ml</span>
-<span class="brand-price">R$ 3,49</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-refrigerante-500ml" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-500ml"></span> - <span id="brand-price-refrigerante-500ml"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-500ml')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Refrigerante Lata 600ml -->
-<div class="product-card">
-<h3>REFRIGERANTE LATA 600ML</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('refrigerante-lata-600ml', 'Coca-Cola Pet 600ml', 4.39)">
-<span class="brand-name">Coca-Cola Pet 600ml</span>
-<span class="brand-price">R$ 4,39</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-lata-600ml', 'Coca-Cola Zero Pet 600ml', 4.39)">
-<span class="brand-name">Coca-Cola Zero Pet 600ml</span>
-<span class="brand-price">R$ 4,39</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-refrigerante-lata-600ml" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-lata-600ml"></span> - <span id="brand-price-refrigerante-lata-600ml"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-lata-600ml')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Refrigerante 1 Litro -->
-<div class="product-card">
-<h3>REFRIGERANTE 1 LITRO</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('refrigerante-1l', 'Baré Pet 1L', 4.39)">
-<span class="brand-name">Baré Pet 1L</span>
-<span class="brand-price">R$ 4,39</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-1l', 'Coca-Cola Pet 1L', 6.49)">
-<span class="brand-name">Coca-Cola Pet 1L</span>
-<span class="brand-price">R$ 6,49</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-1l', 'Fanta Laranja Pet 1L', 5.50)">
-<span class="brand-name">Fanta Laranja Pet 1L</span>
-<span class="brand-price">R$ 5,50</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-1l', 'Tuchaua Pet 1L', 4.39)">
-<span class="brand-name">Tuchaua Pet 1L</span>
-<span class="brand-price">R$ 4,39</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-refrigerante-1l" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-1l"></span> - <span id="brand-price-refrigerante-1l"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-1l')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Refrigerante 2 Litros -->
-<div class="product-card">
-<h3>REFRIGERANTE 2 LITROS</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Sprite Pet 2L', 9.99)">
-<span class="brand-name">Sprite Pet 2L</span>
-<span class="brand-price">R$ 9,99</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Tuchaua Pet 2L', 9.99)">
-<span class="brand-name">Tuchaua Pet 2L</span>
-<span class="brand-price">R$ 9,99</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Fanta Laranja Pet 2L', 9.99)">
-<span class="brand-name">Fanta Laranja Pet 2L</span>
-<span class="brand-price">R$ 9,99</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Fanta Uva Pet 2L', 9.99)">
-<span class="brand-name">Fanta Uva Pet 2L</span>
-<span class="brand-price">R$ 9,99</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Coca-Cola Pet 2L', 7.00)">
-<span class="brand-name">Coca-Cola Pet 2L</span>
-<span class="brand-price">R$ 7,00</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Coca-Cola Zero Pet 2L', 10.29)">
-<span class="brand-name">Coca-Cola Zero Pet 2L</span>
-<span class="brand-price">R$ 10,29</span>
-</div>
-<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Guaraná Antarctica Pet 2L', 10.29)">
-<span class="brand-name">Guaraná Antarctica Pet 2L</span>
-<span class="brand-price">R$ 10,29</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-refrigerante-2l" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-2l"></span> - <span id="brand-price-refrigerante-2l"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-2l')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Água Mineral 510ml -->
-<div class="product-card">
-<h3>ÁGUA MINERAL 510ML</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('agua-mineral-510ml', 'Água Cristal 510ml', 2.25)">
-<span class="brand-name">Água Cristal 510ml</span>
-<span class="brand-price">R$ 2,25</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-agua-mineral-510ml" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-agua-mineral-510ml"></span> - <span id="brand-price-agua-mineral-510ml"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('agua-mineral-510ml')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Sucos de Pacote 200ml -->
-<div class="product-card">
-<h3>SUCOS DE PACOTE 200ML</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('sucos-pacote-200ml', 'Maratá Maracujá 200ml', 2.50)">
-<span class="brand-name">Maratá Maracujá 200ml</span>
-<span class="brand-price">R$ 2,50</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-sucos-pacote-200ml" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-sucos-pacote-200ml"></span> - <span id="brand-price-sucos-pacote-200ml"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('sucos-pacote-200ml')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Sucos de Garrafa 500ml -->
-<div class="product-card">
-<h3>SUCOS DE GARRAFA 500ML</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('sucos-garrafa-500ml', 'Alegria Laranja 500ml', 3.49)">
-<span class="brand-name">Alegria Laranja 500ml</span>
-<span class="brand-price">R$ 3,49</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-sucos-garrafa-500ml" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-sucos-garrafa-500ml"></span> - <span id="brand-price-sucos-garrafa-500ml"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('sucos-garrafa-500ml')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Sucos de Caixa 1L -->
-<div class="product-card">
-<h3>SUCOS DE CAIXA 1L</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Del Valle Uva 1L', 5.50)">
-<span class="brand-name">Del Valle Uva 1L</span>
-<span class="brand-price">R$ 5,50</span>
-</div>
-<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Maratá Abacaxi 1L', 5.00)">
-<span class="brand-name">Maratá Abacaxi 1L</span>
-<span class="brand-price">R$ 5,00</span>
-</div>
-<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Maratá Caju 1L', 5.00)">
-<span class="brand-name">Maratá Caju 1L</span>
-<span class="brand-price">R$ 5,00</span>
-</div>
-<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Maratá Uva 1L', 5.00)">
-<span class="brand-name">Maratá Uva 1L</span>
-<span class="brand-price">R$ 5,00</span>
-</div>
-<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Maratá Laranja 1L', 5.00)">
-<span class="brand-name">Maratá Laranja 1L</span>
-<span class="brand-price">R$ 5,00</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-sucos-caixa-1l" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-sucos-caixa-1l"></span> - <span id="brand-price-sucos-caixa-1l"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('sucos-caixa-1l')">Adicionar ao Carrinho</button>
-</div>
-</div>
-
-<!-- Sucos de Caixa 1,5L -->
-<div class="product-card">
-<h3>SUCOS DE CAIXA 1,5L</h3>
-<div class="product-examples">
-<h4>Escolha o produto:</h4>
-<div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('sucos-caixa-1-5l', 'Del Valle Laranja 1,5L', 6.49)">
-<span class="brand-name">Del Valle Laranja 1,5L</span>
-<span class="brand-price">R$ 6,49</span>
-</div>
-</div>
-</div>
-<div class="selected-brand" id="selected-sucos-caixa-1-5l" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-sucos-caixa-1-5l"></span> - <span id="brand-price-sucos-caixa-1-5l"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('sucos-caixa-1-5l')">Adicionar ao Carrinho</button>
 </div>
 </div>
 </div>
@@ -2945,6 +2975,14 @@ font-size: 36px;
 <span class="brand-name">VANISH 800g</span>
 <span class="brand-price">R$ 4,50</span>
 </div>
+<div class="brand-item" onclick="selectBrand('sabao-po', 'TIXAN YPÊ 800g', 6.50)">
+<span class="brand-name">TIXAN YPÊ 800g</span>
+<span class="brand-price">R$ 6,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabao-po', 'MINUANO 800g', 5.50)">
+<span class="brand-name">MINUANO 800g</span>
+<span class="brand-price">R$ 5,50</span>
+</div>
 </div>
 </div>
 <div class="selected-brand" id="selected-sabao-po" style="display: none;">
@@ -2953,35 +2991,202 @@ font-size: 36px;
 </div>
 </div>
 
-<!-- Desinfetantes -->
+<!-- Água Sanitária -->
 <div class="product-card">
-<h3>DESINFETANTES</h3>
+<h3>ÁGUA SANITÁRIA</h3>
 <div class="product-examples">
 <h4>Escolha a marca:</h4>
 <div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('desinfetantes', 'PINHO SOL 500ml', 8.90)">
-<span class="brand-name">PINHO SOL 500ml</span>
-<span class="brand-price">R$ 8,90</span>
+<div class="brand-item" onclick="selectBrand('agua-sanitaria', 'TUBARÃO 1L', 6.90)">
+<span class="brand-name">TUBARÃO 1L</span>
+<span class="brand-price">R$ 6,90</span>
 </div>
-<div class="brand-item" onclick="selectBrand('desinfetantes', 'LYSOFORM 500ml', 7.50)">
-<span class="brand-name">LYSOFORM 500ml</span>
-<span class="brand-price">R$ 7,50</span>
-</div>
-<div class="brand-item" onclick="selectBrand('desinfetantes', 'VEJA GOLD 500ml', 6.20)">
-<span class="brand-name">VEJA GOLD 500ml</span>
+<div class="brand-item" onclick="selectBrand('agua-sanitaria', 'BRINORT 2L', 6.20)">
+<span class="brand-name">BRINORT 2L</span>
 <span class="brand-price">R$ 6,20</span>
 </div>
+<div class="brand-item" onclick="selectBrand('agua-sanitaria', 'ECONÔMICO 1L', 4.90)">
+<span class="brand-name">ECONÔMICO 1L</span>
+<span class="brand-price">R$ 4,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('agua-sanitaria', 'BRINOX 2L', 6.50)">
+<span class="brand-name">BRINOX 2L</span>
+<span class="brand-price">R$ 6,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('agua-sanitaria', 'SANTA CRUZ 1L', 11.70)">
+<span class="brand-name">SANTA CRUZ 1L</span>
+<span class="brand-price">R$ 11,70</span>
+</div>
+<div class="brand-item" onclick="selectBrand('agua-sanitaria', 'FACILITA 1L', 11.70)">
+<span class="brand-name">FACILITA 1L</span>
+<span class="brand-price">R$ 11,70</span>
 </div>
 </div>
-<div class="selected-brand" id="selected-desinfetantes" style="display: none;">
-<p><strong>Selecionado:</strong> <span id="brand-name-desinfetantes"></span> - <span id="brand-price-desinfetantes"></span></p>
-<button class="add-to-cart-btn" onclick="addSelectedToCart('desinfetantes')">Adicionar ao Carrinho</button>
+</div>
+<div class="selected-brand" id="selected-agua-sanitaria" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-agua-sanitaria"></span> - <span id="brand-price-agua-sanitaria"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('agua-sanitaria')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Sabão Líquido -->
+<div class="product-card">
+<h3>SABÃO LÍQUIDO</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('sabao-liquido', 'BRINORT 2L', 4.50)">
+<span class="brand-name">BRINORT 2L</span>
+<span class="brand-price">R$ 4,50</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-sabao-liquido" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-sabao-liquido"></span> - <span id="brand-price-sabao-liquido"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('sabao-liquido')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Outros Produtos de Limpeza -->
+<div class="product-card">
+<h3>OUTROS PRODUTOS DE LIMPEZA</h3>
+<div class="product-examples">
+<h4>Escolha o produto:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('outros-limpeza', 'Limpa Alumínio 500ml', 5.00)">
+<span class="brand-name">Limpa Alumínio 500ml</span>
+<span class="brand-price">R$ 5,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('outros-limpeza', 'Álcool Etílico 1L', 11.70)">
+<span class="brand-name">Álcool Etílico 1L</span>
+<span class="brand-price">R$ 11,70</span>
+</div>
+<div class="brand-item" onclick="selectBrand('outros-limpeza', 'CASA & PERFUME 500ml', 6.00)">
+<span class="brand-name">CASA & PERFUME 500ml</span>
+<span class="brand-price">R$ 6,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('outros-limpeza', 'POLIFLOR 200ml', 16.50)">
+<span class="brand-name">POLIFLOR 200ml</span>
+<span class="brand-price">R$ 16,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('outros-limpeza', 'SBP 50ml', 18.00)">
+<span class="brand-name">SBP 50ml</span>
+<span class="brand-price">R$ 18,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('outros-limpeza', 'BOMBRIL 60g', 3.00)">
+<span class="brand-name">BOMBRIL 60g</span>
+<span class="brand-price">R$ 3,00</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-outros-limpeza" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-outros-limpeza"></span> - <span id="brand-price-outros-limpeza"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('outros-limpeza')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Inseticidas -->
+<div class="product-card">
+<h3>INSETICIDAS</h3>
+<div class="product-examples">
+<h4>Escolha o produto:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('inseticidas', 'SBP 50ml', 18.00)">
+<span class="brand-name">SBP 50ml</span>
+<span class="brand-price">R$ 18,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('inseticidas', 'Baygon aerosol', 12.90)">
+<span class="brand-name">Baygon aerosol</span>
+<span class="brand-price">R$ 12,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('inseticidas', 'Raid casa & jardim', 14.20)">
+<span class="brand-name">Raid casa & jardim</span>
+<span class="brand-price">R$ 14,20</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-inseticidas" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-inseticidas"></span> - <span id="brand-price-inseticidas"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('inseticidas')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Utensílios / Acessórios -->
+<div class="product-card">
+<h3>UTENSÍLIOS / ACESSÓRIOS</h3>
+<div class="product-examples">
+<h4>Escolha o produto:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('utensilios-acessorios', 'BOMBRIL 60g', 3.00)">
+<span class="brand-name">BOMBRIL 60g</span>
+<span class="brand-price">R$ 3,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('utensilios-acessorios', 'Esponja Scotch-Brite', 2.80)">
+<span class="brand-name">Esponja Scotch-Brite</span>
+<span class="brand-price">R$ 2,80</span>
+</div>
+<div class="brand-item" onclick="selectBrand('utensilios-acessorios', 'Pano de chão Perfex', 4.50)">
+<span class="brand-name">Pano de chão Perfex</span>
+<span class="brand-price">R$ 4,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('utensilios-acessorios', 'Vassoura Condor', 18.90)">
+<span class="brand-name">Vassoura Condor</span>
+<span class="brand-price">R$ 18,90</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-utensilios-acessorios" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-utensilios-acessorios"></span> - <span id="brand-price-utensilios-acessorios"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('utensilios-acessorios')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Papel Higiênico -->
+<div class="product-card">
+<h3>PAPEL HIGIÊNICO</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('papel-higienico', 'NORTE PELL 8 rolos', 14.50)">
+<span class="brand-name">NORTE PELL 8 rolos</span>
+<span class="brand-price">R$ 14,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('papel-higienico', 'DUETOS 4 rolos', 7.00)">
+<span class="brand-name">DUETOS 4 rolos</span>
+<span class="brand-price">R$ 7,00</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-papel-higienico" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-papel-higienico"></span> - <span id="brand-price-papel-higienico"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('papel-higienico')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Sacos de Lixo -->
+<div class="product-card">
+<h3>SACOS DE LIXO</h3>
+<div class="product-examples">
+<h4>Escolha o tamanho:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('sacos-lixo', 'KATA LIXO 50L', 2.00)">
+<span class="brand-name">KATA LIXO 50L</span>
+<span class="brand-price">R$ 2,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sacos-lixo', 'KATA LIXO 30L', 2.00)">
+<span class="brand-name">KATA LIXO 30L</span>
+<span class="brand-price">R$ 2,00</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-sacos-lixo" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-sacos-lixo"></span> - <span id="brand-price-sacos-lixo"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('sacos-lixo')">Adicionar ao Carrinho</button>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Categoria Higiene -->
 <section class="categoria" id="higiene">
 <h2>PERFUMARIA E HIGIENE</h2>
 
@@ -2992,17 +3197,77 @@ font-size: 36px;
 <div class="product-examples">
 <h4>Escolha a marca:</h4>
 <div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('shampoos', 'PANTENE 400ml', 12.90)">
-<span class="brand-name">PANTENE 400ml</span>
-<span class="brand-price">R$ 12,90</span>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Ultra Repair Shamp. Dicolore 1L', 69.90)">
+<span class="brand-name">Ultra Repair Shamp. Dicolore 1L</span>
+<span class="brand-price">R$ 69,90</span>
 </div>
-<div class="brand-item" onclick="selectBrand('shampoos', 'SEDA 325ml', 8.50)">
-<span class="brand-name">SEDA 325ml</span>
-<span class="brand-price">R$ 8,50</span>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Niely Gold Hidra. Milagrosa 450G', 24.90)">
+<span class="brand-name">Niely Gold Hidra. Milagrosa 450G</span>
+<span class="brand-price">R$ 24,90</span>
 </div>
-<div class="brand-item" onclick="selectBrand('shampoos', 'ELSEVE 400ml', 11.20)">
-<span class="brand-name">ELSEVE 400ml</span>
-<span class="brand-price">R$ 11,20</span>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Shampoo Nativa Spa O Boticário 300ML', 29.90)">
+<span class="brand-name">Shampoo Nativa Spa O Boticário 300ML</span>
+<span class="brand-price">R$ 29,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Santini Prof. Miracolo Shamp. Preparare 1L', 79.90)">
+<span class="brand-name">Santini Prof. Miracolo Shamp. Preparare 1L</span>
+<span class="brand-price">R$ 79,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Seda Boom Hidratacao 425ML', 79.90)">
+<span class="brand-name">Seda Boom Hidratacao 425ML</span>
+<span class="brand-price">R$ 79,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Seda Cachos Definidos Shamp. 325ML', 34.90)">
+<span class="brand-name">Seda Cachos Definidos Shamp. 325ML</span>
+<span class="brand-price">R$ 34,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Seda by Rayza Hidratacao Intensa Shamp. 300ML', 39.90)">
+<span class="brand-name">Seda by Rayza Hidratacao Intensa Shamp. 300ML</span>
+<span class="brand-price">R$ 39,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Nativa Spa Monoi&Argan Shamp. 300ML', 29.90)">
+<span class="brand-name">Nativa Spa Monoi&Argan Shamp. 300ML</span>
+<span class="brand-price">R$ 29,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Pantene Pro-V Shampoo 200ML', 27.90)">
+<span class="brand-name">Pantene Pro-V Shampoo 200ML</span>
+<span class="brand-price">R$ 27,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Head & Shoulders Shamp. Anticaspa 400ML', 29.90)">
+<span class="brand-name">Head & Shoulders Shamp. Anticaspa 400ML</span>
+<span class="brand-price">R$ 29,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Head & Shoulders Shamp. Anticaspa 200ML', 29.90)">
+<span class="brand-name">Head & Shoulders Shamp. Anticaspa 200ML</span>
+<span class="brand-price">R$ 29,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Baruel Baby Shamp. Sono Tranquilo 400ML', 14.90)">
+<span class="brand-name">Baruel Baby Shamp. Sono Tranquilo 400ML</span>
+<span class="brand-price">R$ 14,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Eudora Siage Nutri Acid. Complex Shamp. 250ML', 69.90)">
+<span class="brand-name">Eudora Siage Nutri Acid. Complex Shamp. 250ML</span>
+<span class="brand-price">R$ 69,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Clear Men Hidra. Campeã Vini Jr. 200ML', 22.00)">
+<span class="brand-name">Clear Men Hidra. Campeã Vini Jr. 200ML</span>
+<span class="brand-price">R$ 22,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Natura Homem Sagaz Shamp. Cabelo e Corpo 100ML', 48.28)">
+<span class="brand-name">Natura Homem Sagaz Shamp. Cabelo e Corpo 100ML</span>
+<span class="brand-price">R$ 48,28</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Bell Corpus Bababell Uva 380ML', 19.90)">
+<span class="brand-name">Bell Corpus Bababell Uva 380ML</span>
+<span class="brand-price">R$ 19,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Bell Corpus Bababell Melancia 380ML', 19.90)">
+<span class="brand-name">Bell Corpus Bababell Melancia 380ML</span>
+<span class="brand-price">R$ 19,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('shampoos', 'Charmelle Condicionador 400G', 24.90)">
+<span class="brand-name">Charmelle Condicionador 400G</span>
+<span class="brand-price">R$ 24,90</span>
 </div>
 </div>
 </div>
@@ -3018,17 +3283,49 @@ font-size: 36px;
 <div class="product-examples">
 <h4>Escolha a marca:</h4>
 <div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('condicionadores', 'PANTENE 175ml', 9.80)">
-<span class="brand-name">PANTENE 175ml</span>
-<span class="brand-price">R$ 9,80</span>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Nutrie Repaier Condicionador Dicolore 1L', 69.90)">
+<span class="brand-name">Nutrie Repaier Condicionador Dicolore 1L</span>
+<span class="brand-price">R$ 69,90</span>
 </div>
-<div class="brand-item" onclick="selectBrand('condicionadores', 'SEDA 325ml', 8.50)">
-<span class="brand-name">SEDA 325ml</span>
-<span class="brand-price">R$ 8,50</span>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Olenka Profiss. Condicionador Rev. 1,5L', 171.00)">
+<span class="brand-name">Olenka Profiss. Condicionador Rev. 1,5L</span>
+<span class="brand-price">R$ 171,00</span>
 </div>
-<div class="brand-item" onclick="selectBrand('condicionadores', 'ELSEVE 200ml', 8.90)">
-<span class="brand-name">ELSEVE 200ml</span>
-<span class="brand-price">R$ 8,90</span>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Olenka Profiss. Espec. Condicionador de Trat. 1,5L', 79.90)">
+<span class="brand-name">Olenka Profiss. Espec. Condicionador de Trat. 1,5L</span>
+<span class="brand-price">R$ 79,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Inovar Bombar Coconut Condicionador 1L', 59.90)">
+<span class="brand-name">Inovar Bombar Coconut Condicionador 1L</span>
+<span class="brand-price">R$ 59,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Santini Prof. Miracolo Masc. Cond. 1KG', 99.90)">
+<span class="brand-name">Santini Prof. Miracolo Masc. Cond. 1KG</span>
+<span class="brand-price">R$ 99,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Santini Prof. Miracolo Masc. Nutrizone 1KG', 99.90)">
+<span class="brand-name">Santini Prof. Miracolo Masc. Nutrizone 1KG</span>
+<span class="brand-price">R$ 99,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Gold Salva Fios Cond. Antiquebra 175ML', 19.90)">
+<span class="brand-name">Gold Salva Fios Cond. Antiquebra 175ML</span>
+<span class="brand-price">R$ 19,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Seda Boom Força & Crescimento Cond. 900ML', 34.90)">
+<span class="brand-name">Seda Boom Força & Crescimento Cond. 900ML</span>
+<span class="brand-price">R$ 34,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Nativa Spa Monoi&Argan Cond. 300ML', 29.90)">
+<span class="brand-name">Nativa Spa Monoi&Argan Cond. 300ML</span>
+<span class="brand-price">R$ 29,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Eudora Siage Nutri Acid. Complex Cond. 200ML', 69.90)">
+<span class="brand-name">Eudora Siage Nutri Acid. Complex Cond. 200ML</span>
+<span class="brand-price">R$ 69,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('condicionadores', 'Charmelle Condicionador 400G', 24.90)">
+<span class="brand-name">Charmelle Condicionador 400G</span>
+<span class="brand-price">R$ 24,90</span>
 </div>
 </div>
 </div>
@@ -3038,23 +3335,177 @@ font-size: 36px;
 </div>
 </div>
 
+<!-- Máscaras / Tratamentos Capilares -->
+<div class="product-card">
+<h3>MÁSCARAS / TRATAMENTOS CAPILARES</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('mascaras-tratamentos', 'Bioplastia Capilar Reconst. Dicolore 1KG', 69.90)">
+<span class="brand-name">Bioplastia Capilar Reconst. Dicolore 1KG</span>
+<span class="brand-price">R$ 69,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('mascaras-tratamentos', 'Olenka Profiss. Recons. Bioplastia Capilar 1KG', 149.90)">
+<span class="brand-name">Olenka Profiss. Recons. Bioplastia Capilar 1KG</span>
+<span class="brand-price">R$ 149,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('mascaras-tratamentos', 'Olenka Profiss. Gloss de Reestruturação 500ML', 69.90)">
+<span class="brand-name">Olenka Profiss. Gloss de Reestruturação 500ML</span>
+<span class="brand-price">R$ 69,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('mascaras-tratamentos', 'Santini Prof. Miracolo Masc. Cond. 1KG', 99.90)">
+<span class="brand-name">Santini Prof. Miracolo Masc. Cond. 1KG</span>
+<span class="brand-price">R$ 99,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('mascaras-tratamentos', 'Santini Prof. Miracolo Masc. Nutrizone 1KG', 99.90)">
+<span class="brand-name">Santini Prof. Miracolo Masc. Nutrizone 1KG</span>
+<span class="brand-price">R$ 99,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('mascaras-tratamentos', 'Skala Expert Mais Crespos 1000G', 17.90)">
+<span class="brand-name">Skala Expert Mais Crespos 1000G</span>
+<span class="brand-price">R$ 17,90</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-mascaras-tratamentos" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-mascaras-tratamentos"></span> - <span id="brand-price-mascaras-tratamentos"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('mascaras-tratamentos')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Finalizadores / Defrizantes / Séruns -->
+<div class="product-card">
+<h3>FINALIZADORES / DEFRIZANTES / SÉRUNS</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Olenka Royal Look Alisante Capilar 1L', 89.90)">
+<span class="brand-name">Olenka Royal Look Alisante Capilar 1L</span>
+<span class="brand-price">R$ 89,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Soft Hair Profiss. Neutramix 1L', 29.99)">
+<span class="brand-name">Soft Hair Profiss. Neutramix 1L</span>
+<span class="brand-price">R$ 29,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Soft Hair Mosusse Defrizante Óleo de Argan 400ML', 11.99)">
+<span class="brand-name">Soft Hair Mosusse Defrizante Óleo de Argan 400ML</span>
+<span class="brand-price">R$ 11,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Soft Hair Queratina Gel 300G', 11.69)">
+<span class="brand-name">Soft Hair Queratina Gel 300G</span>
+<span class="brand-price">R$ 11,69</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Nazca Sfera Dezfrizante Prof. 400G', 17.99)">
+<span class="brand-name">Nazca Sfera Dezfrizante Prof. 400G</span>
+<span class="brand-price">R$ 17,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Cless Care Liss Spray Hair 150ML', 24.38)">
+<span class="brand-name">Cless Care Liss Spray Hair 150ML</span>
+<span class="brand-price">R$ 24,38</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Cless Care Liss Spray Hair 400ML', 49.90)">
+<span class="brand-name">Cless Care Liss Spray Hair 400ML</span>
+<span class="brand-price">R$ 49,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Cless Spray Finalizador 300ML', 39.90)">
+<span class="brand-name">Cless Spray Finalizador 300ML</span>
+<span class="brand-price">R$ 39,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Cless Care Liss Água Oxigen. 850ML', 89.90)">
+<span class="brand-name">Cless Care Liss Água Oxigen. 850ML</span>
+<span class="brand-price">R$ 89,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Santini Prof. Miracolo Serum Riparare 400G', 59.90)">
+<span class="brand-name">Santini Prof. Miracolo Serum Riparare 400G</span>
+<span class="brand-price">R$ 59,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Inoar Fluido Ativador de Cachos 200ML', 79.90)">
+<span class="brand-name">Inoar Fluido Ativador de Cachos 200ML</span>
+<span class="brand-price">R$ 79,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('finalizadores-defrizantes', 'Tabu Fixador de Cabelo 400ML', 14.90)">
+<span class="brand-name">Tabu Fixador de Cabelo 400ML</span>
+<span class="brand-price">R$ 14,90</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-finalizadores-defrizantes" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-finalizadores-defrizantes"></span> - <span id="brand-price-finalizadores-defrizantes"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('finalizadores-defrizantes')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Coloração / Tonalizante / OX -->
+<div class="product-card">
+<h3>COLORAÇÃO / TONALIZANTE / OX</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('coloracao-tonalizante', 'Beautycolor Vermelhos Infalíveis 66.46 45G', 32.90)">
+<span class="brand-name">Beautycolor Vermelhos Infalíveis 66.46 45G</span>
+<span class="brand-price">R$ 32,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('coloracao-tonalizante', 'Cor&Ton 2.0 Preto Coloracao Alta Duração 50G', 39.90)">
+<span class="brand-name">Cor&Ton 2.0 Preto Coloracao Alta Duração 50G</span>
+<span class="brand-price">R$ 39,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('coloracao-tonalizante', 'Coloração Creme Pigment 60G', 34.90)">
+<span class="brand-name">Coloração Creme Pigment 60G</span>
+<span class="brand-price">R$ 34,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('coloracao-tonalizante', 'Bela&Cor Beautycolor Sem Amônia 6.0 45G', 34.90)">
+<span class="brand-name">Bela&Cor Beautycolor Sem Amônia 6.0 45G</span>
+<span class="brand-price">R$ 34,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('coloracao-tonalizante', 'Color Creme Premium Sem Amônio Uso Prof. 60G', 123.81)">
+<span class="brand-name">Color Creme Premium Sem Amônio Uso Prof. 60G</span>
+<span class="brand-price">R$ 123,81</span>
+</div>
+<div class="brand-item" onclick="selectBrand('coloracao-tonalizante', 'Dicolore Prof. Concept Tonalizante 60G', 32.90)">
+<span class="brand-name">Dicolore Prof. Concept Tonalizante 60G</span>
+<span class="brand-price">R$ 32,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('coloracao-tonalizante', 'Yamá Expert Oxicreme F. Estabilizada Vol. 10 900ML', 16.90)">
+<span class="brand-name">Yamá Expert Oxicreme F. Estabilizada Vol. 10 900ML</span>
+<span class="brand-price">R$ 16,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('coloracao-tonalizante', 'Yamá Expert Oxicreme F. Estabilizada Vol. 30 900ML', 16.90)">
+<span class="brand-name">Yamá Expert Oxicreme F. Estabilizada Vol. 30 900ML</span>
+<span class="brand-price">R$ 16,90</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-coloracao-tonalizante" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-coloracao-tonalizante"></span> - <span id="brand-price-coloracao-tonalizante"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('coloracao-tonalizante')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
 <!-- Sabonetes -->
 <div class="product-card">
 <h3>SABONETES</h3>
 <div class="product-examples">
 <h4>Escolha a marca:</h4>
 <div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('sabonetes', 'DOVE 90g', 4.50)">
-<span class="brand-name">DOVE 90g</span>
-<span class="brand-price">R$ 4,50</span>
-</div>
-<div class="brand-item" onclick="selectBrand('sabonetes', 'LUX 85g', 3.20)">
-<span class="brand-name">LUX 85g</span>
-<span class="brand-price">R$ 3,20</span>
-</div>
-<div class="brand-item" onclick="selectBrand('sabonetes', 'PROTEX 85g', 3.80)">
+<div class="brand-item" onclick="selectBrand('sabonetes', 'PROTEX 85g', 1.99)">
 <span class="brand-name">PROTEX 85g</span>
-<span class="brand-price">R$ 3,80</span>
+<span class="brand-price">R$ 1,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes', 'SIE NE 85g', 2.19)">
+<span class="brand-name">SIE NE 85g</span>
+<span class="brand-price">R$ 2,19</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes', 'MALBEC (barra) 80g', 33.05)">
+<span class="brand-name">MALBEC (barra) 80g</span>
+<span class="brand-price">R$ 33,05</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes', 'EVEN MORANGO 85g', 6.90)">
+<span class="brand-name">EVEN MORANGO 85g</span>
+<span class="brand-price">R$ 6,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes', 'PORÁN GEL FACIAL 100g', 8.90)">
+<span class="brand-name">PORÁN GEL FACIAL 100g</span>
+<span class="brand-price">R$ 8,90</span>
 </div>
 </div>
 </div>
@@ -3064,23 +3515,167 @@ font-size: 36px;
 </div>
 </div>
 
+<!-- Sabonetes Líquidos -->
+<div class="product-card">
+<h3>SABONETES LÍQUIDOS</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('sabonetes-liquidos', 'HIDRAGEM ESFOLIANTE 180ml', 9.99)">
+<span class="brand-name">HIDRAGEM ESFOLIANTE 180ml</span>
+<span class="brand-price">R$ 9,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes-liquidos', 'RUBY 200ml', 21.99)">
+<span class="brand-name">RUBY 200ml</span>
+<span class="brand-price">R$ 21,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes-liquidos', 'BIO INSTINTO 200ml', 18.89)">
+<span class="brand-name">BIO INSTINTO 200ml</span>
+<span class="brand-price">R$ 18,89</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes-liquidos', 'TRÁ LÁ LÁ GLICERINADO 250ml', 20.99)">
+<span class="brand-name">TRÁ LÁ LÁ GLICERINADO 250ml</span>
+<span class="brand-price">R$ 20,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes-liquidos', 'BELL CORPUS 200ml', 32.89)">
+<span class="brand-name">BELL CORPUS 200ml</span>
+<span class="brand-price">R$ 32,89</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sabonetes-liquidos', 'NATURA HOMEM SAGAZ 100ml', 48.28)">
+<span class="brand-name">NATURA HOMEM SAGAZ 100ml</span>
+<span class="brand-price">R$ 48,28</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-sabonetes-liquidos" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-sabonetes-liquidos"></span> - <span id="brand-price-sabonetes-liquidos"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('sabonetes-liquidos')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Hidratantes Corporais -->
+<div class="product-card">
+<h3>HIDRATANTES CORPORAIS</h3>
+<div class="product-examples">
+<h4>Escolha o produto:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('hidratantes-corporais', 'LUDURANA FACIAL 100g', 13.01)">
+<span class="brand-name">LUDURANA FACIAL 100g</span>
+<span class="brand-price">R$ 13,01</span>
+</div>
+<div class="brand-item" onclick="selectBrand('hidratantes-corporais', 'NIVEA MILK 200ml', 20.69)">
+<span class="brand-name">NIVEA MILK 200ml</span>
+<span class="brand-price">R$ 20,69</span>
+</div>
+<div class="brand-item" onclick="selectBrand('hidratantes-corporais', 'NIVEA FIRMADOR Q10 400ml', 49.90)">
+<span class="brand-name">NIVEA FIRMADOR Q10 400ml</span>
+<span class="brand-price">R$ 49,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('hidratantes-corporais', 'SKALA EXPERT CRESPOS 1000g', 17.90)">
+<span class="brand-name">SKALA EXPERT CRESPOS 1000g</span>
+<span class="brand-price">R$ 17,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('hidratantes-corporais', 'BELL CORPUS BABABELL UVA 380ml', 19.90)">
+<span class="brand-name">BELL CORPUS BABABELL UVA 380ml</span>
+<span class="brand-price">R$ 19,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('hidratantes-corporais', 'BELL CORPUS BABABELL MELANCIA 380ml', 19.90)">
+<span class="brand-name">BELL CORPUS BABABELL MELANCIA 380ml</span>
+<span class="brand-price">R$ 19,90</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-hidratantes-corporais" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-hidratantes-corporais"></span> - <span id="brand-price-hidratantes-corporais"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('hidratantes-corporais')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
 <!-- Desodorantes -->
 <div class="product-card">
 <h3>DESODORANTES</h3>
 <div class="product-examples">
 <h4>Escolha a marca:</h4>
 <div class="brand-selection">
-<div class="brand-item" onclick="selectBrand('desodorantes', 'REXONA 150ml', 8.90)">
-<span class="brand-name">REXONA 150ml</span>
-<span class="brand-price">R$ 8,90</span>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'NIVEA MEN BLACK & WHITE 150ml', 18.00)">
+<span class="brand-name">NIVEA MEN BLACK & WHITE 150ml</span>
+<span class="brand-price">R$ 18,00</span>
 </div>
-<div class="brand-item" onclick="selectBrand('desodorantes', 'DOVE 150ml', 9.50)">
-<span class="brand-name">DOVE 150ml</span>
-<span class="brand-price">R$ 9,50</span>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'DOVE GO FRESH 150ml', 18.99)">
+<span class="brand-name">DOVE GO FRESH 150ml</span>
+<span class="brand-price">R$ 18,99</span>
 </div>
-<div class="brand-item" onclick="selectBrand('desodorantes', 'NIVEA 150ml', 7.80)">
-<span class="brand-name">NIVEA 150ml</span>
-<span class="brand-price">R$ 7,80</span>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'DOVE ORIGINAL 150ml', 15.93)">
+<span class="brand-name">DOVE ORIGINAL 150ml</span>
+<span class="brand-price">R$ 15,93</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'DOVE BEAUTY FINISH 150ml', 16.92)">
+<span class="brand-name">DOVE BEAUTY FINISH 150ml</span>
+<span class="brand-price">R$ 16,92</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'DOVE SENSITIVE 150ml', 15.59)">
+<span class="brand-name">DOVE SENSITIVE 150ml</span>
+<span class="brand-price">R$ 15,59</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'REXONA CLINICAL 150ml', 15.43)">
+<span class="brand-name">REXONA CLINICAL 150ml</span>
+<span class="brand-price">R$ 15,43</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'REXONA POWDER DRY 200ml', 34.06)">
+<span class="brand-name">REXONA POWDER DRY 200ml</span>
+<span class="brand-price">R$ 34,06</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'DOVE ORIGINAL 200ml', 22.97)">
+<span class="brand-name">DOVE ORIGINAL 200ml</span>
+<span class="brand-price">R$ 22,97</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'ABOVE WOMEN STRONG 150ml', 19.90)">
+<span class="brand-name">ABOVE WOMEN STRONG 150ml</span>
+<span class="brand-price">R$ 19,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'MONANGE FRUTAS VERMELHAS 150ml', 10.33)">
+<span class="brand-name">MONANGE FRUTAS VERMELHAS 150ml</span>
+<span class="brand-price">R$ 10,33</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'DOVE NUTRITIVE SECRETS 150ml', 17.90)">
+<span class="brand-name">DOVE NUTRITIVE SECRETS 150ml</span>
+<span class="brand-price">R$ 17,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'MYHEALTH MOOD CARE 150ml', 14.90)">
+<span class="brand-name">MYHEALTH MOOD CARE 150ml</span>
+<span class="brand-price">R$ 14,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'MALBEC AEROSSOL 124ml', 24.90)">
+<span class="brand-name">MALBEC AEROSSOL 124ml</span>
+<span class="brand-price">R$ 24,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'MALBEC ROLL-ON 55ml', 19.90)">
+<span class="brand-name">MALBEC ROLL-ON 55ml</span>
+<span class="brand-price">R$ 19,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'REXONA ROLL-ON 20ml', 15.43)">
+<span class="brand-name">REXONA ROLL-ON 20ml</span>
+<span class="brand-price">R$ 15,43</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'HERBÍSSIMO TRADICIONAL 55g', 15.59)">
+<span class="brand-name">HERBÍSSIMO TRADICIONAL 55g</span>
+<span class="brand-price">R$ 15,59</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'HERBÍSSIMO TALCO 55g', 15.59)">
+<span class="brand-name">HERBÍSSIMO TALCO 55g</span>
+<span class="brand-price">R$ 15,59</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'HERBÍSSIMO SENSITIVE 55g', 15.59)">
+<span class="brand-name">HERBÍSSIMO SENSITIVE 55g</span>
+<span class="brand-price">R$ 15,59</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'HERBÍSSIMO NEUTRO 55g', 5.05)">
+<span class="brand-name">HERBÍSSIMO NEUTRO 55g</span>
+<span class="brand-price">R$ 5,05</span>
+</div>
+<div class="brand-item" onclick="selectBrand('desodorantes', 'AVON FRUTAS VERMELHAS 50g', 10.33)">
+<span class="brand-name">AVON FRUTAS VERMELHAS 50g</span>
+<span class="brand-price">R$ 10,33</span>
 </div>
 </div>
 </div>
@@ -3089,274 +3684,1007 @@ font-size: 36px;
 <button class="add-to-cart-btn" onclick="addSelectedToCart('desodorantes')">Adicionar ao Carrinho</button>
 </div>
 </div>
+
+<!-- Perfumes / Colônias -->
+<div class="product-card">
+<h3>PERFUMES / COLÔNIAS</h3>
+<div class="product-examples">
+<h4>Escolha o produto:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'LUNA RADIANTE 75ml', 104.90)">
+<span class="brand-name">LUNA RADIANTE 75ml</span>
+<span class="brand-price">R$ 104,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'MEU PRIMEIRO HUMOR (Natura) 75ml', 89.90)">
+<span class="brand-name">MEU PRIMEIRO HUMOR (Natura) 75ml</span>
+<span class="brand-price">R$ 89,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'NATURA ÁGUAS JABUTICABA 170ml', 76.90)">
+<span class="brand-name">NATURA ÁGUAS JABUTICABA 170ml</span>
+<span class="brand-price">R$ 76,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'EGEO BOMB BLACK 90ml', 143.00)">
+<span class="brand-name">EGEO BOMB BLACK 90ml</span>
+<span class="brand-price">R$ 143,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'EUDORA FLOW 100ml', 30.00)">
+<span class="brand-name">EUDORA FLOW 100ml</span>
+<span class="brand-price">R$ 30,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'NATURA HOMEM SAGAZ 100ml', 120.00)">
+<span class="brand-name">NATURA HOMEM SAGAZ 100ml</span>
+<span class="brand-price">R$ 120,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'LIZ AURA 100ml', 169.90)">
+<span class="brand-name">LIZ AURA 100ml</span>
+<span class="brand-price">R$ 169,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'KAIAK (Natura) 100ml', 54.90)">
+<span class="brand-name">KAIAK (Natura) 100ml</span>
+<span class="brand-price">R$ 54,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'MALBEC SIGNATURE OBOTICÁRIO 90ml', 308.90)">
+<span class="brand-name">MALBEC SIGNATURE OBOTICÁRIO 90ml</span>
+<span class="brand-price">R$ 308,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'CLUB 420 PINK EXCLUSIVE 100ml', 114.95)">
+<span class="brand-name">CLUB 420 PINK EXCLUSIVE 100ml</span>
+<span class="brand-price">R$ 114,95</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'BOTICA 214 DARK MINT 90ml', 167.00)">
+<span class="brand-name">BOTICA 214 DARK MINT 90ml</span>
+<span class="brand-price">R$ 167,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'TOUTI VIP 50ml', 43.90)">
+<span class="brand-name">TOUTI VIP 50ml</span>
+<span class="brand-price">R$ 43,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('perfumes-colonias', 'MAYBE GODNESS 30ml', 37.88)">
+<span class="brand-name">MAYBE GODNESS 30ml</span>
+<span class="brand-price">R$ 37,88</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-perfumes-colonias" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-perfumes-colonias"></span> - <span id="brand-price-perfumes-colonias"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('perfumes-colonias')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Higiene Bucal -->
+<div class="product-card">
+<h3>HIGIENE BUCAL</h3>
+<div class="product-examples">
+<h4>Escolha o produto:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'ORAL-B MENTA LEVE 500ml', 23.99)">
+<span class="brand-name">ORAL-B MENTA LEVE 500ml</span>
+<span class="brand-price">R$ 23,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'PLAX ODOR CONTROL COLGATE 250ml', 22.90)">
+<span class="brand-name">PLAX ODOR CONTROL COLGATE 250ml</span>
+<span class="brand-price">R$ 22,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'PLAX CLASSIC COLGATE 250ml', 14.33)">
+<span class="brand-name">PLAX CLASSIC COLGATE 250ml</span>
+<span class="brand-price">R$ 14,33</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'LISTERINE CUIDADO TOTAL 500ml', 24.99)">
+<span class="brand-name">LISTERINE CUIDADO TOTAL 500ml</span>
+<span class="brand-price">R$ 24,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'LISTERINE WHITERNING EXTREME 473ml', 34.99)">
+<span class="brand-name">LISTERINE WHITERNING EXTREME 473ml</span>
+<span class="brand-price">R$ 34,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'COLGATE LUMINOUS WHITE 70g', 11.99)">
+<span class="brand-name">COLGATE LUMINOUS WHITE 70g</span>
+<span class="brand-price">R$ 11,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'COLGATE CLEAN MINT 90g', 9.90)">
+<span class="brand-name">COLGATE CLEAN MINT 90g</span>
+<span class="brand-price">R$ 9,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'COLGATE TRIPLA AÇÃO 120g', 13.01)">
+<span class="brand-name">COLGATE TRIPLA AÇÃO 120g</span>
+<span class="brand-price">R$ 13,01</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'COLGATE TRIPLA AÇÃO 180g', 8.99)">
+<span class="brand-name">COLGATE TRIPLA AÇÃO 180g</span>
+<span class="brand-price">R$ 8,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'COLGATE DENTES FORTES 50g', 6.99)">
+<span class="brand-name">COLGATE DENTES FORTES 50g</span>
+<span class="brand-price">R$ 6,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('higiene-bucal', 'COLGATE DENTES FORTES 90g', 6.99)">
+<span class="brand-name">COLGATE DENTES FORTES 90g</span>
+<span class="brand-price">R$ 6,99</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-higiene-bucal" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-higiene-bucal"></span> - <span id="brand-price-higiene-bucal"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('higiene-bucal')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Maquiagem / Skincare -->
+<div class="product-card">
+<h3>MAQUIAGEM / SKINCARE</h3>
+<div class="product-examples">
+<h4>Escolha o produto:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('maquiagem-skincare', 'MARY KAY 147ml', 55.90)">
+<span class="brand-name">MARY KAY 147ml</span>
+<span class="brand-price">R$ 55,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('maquiagem-skincare', 'CLINICAL SOLUTIONS MARY KAY 15ml', 115.90)">
+<span class="brand-name">CLINICAL SOLUTIONS MARY KAY 15ml</span>
+<span class="brand-price">R$ 115,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('maquiagem-skincare', 'PLAYBOY 16g', 25.99)">
+<span class="brand-name">PLAYBOY 16g</span>
+<span class="brand-price">R$ 25,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('maquiagem-skincare', 'RUBY ROSE FLAWLESS 4ml', 18.89)">
+<span class="brand-name">RUBY ROSE FLAWLESS 4ml</span>
+<span class="brand-price">R$ 18,89</span>
+</div>
+<div class="brand-item" onclick="selectBrand('maquiagem-skincare', 'STEP 2 17ml', 19.90)">
+<span class="brand-name">STEP 2 17ml</span>
+<span class="brand-price">R$ 19,90</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-maquiagem-skincare" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-maquiagem-skincare"></span> - <span id="brand-price-maquiagem-skincare"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('maquiagem-skincare')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Produtos Infantis -->
+<div class="product-card">
+<h3>PRODUTOS INFANTIS</h3>
+<div class="product-examples">
+<h4>Escolha o produto:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('produtos-infantis', 'Pomada para Assadura Hipomed 100MG', 12.90)">
+<span class="brand-name">Pomada para Assadura Hipomed 100MG</span>
+<span class="brand-price">R$ 12,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('produtos-infantis', 'Baruel Baby Shamp. Sono Tranquilo 400ML', 14.90)">
+<span class="brand-name">Baruel Baby Shamp. Sono Tranquilo 400ML</span>
+<span class="brand-price">R$ 14,90</span>
+</div>
+<div class="brand-item" onclick="selectBrand('produtos-infantis', 'Pira Kids 1L', 7.00)">
+<span class="brand-name">Pira Kids 1L</span>
+<span class="brand-price">R$ 7,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('produtos-infantis', 'Pira Kids 200g', 5.50)">
+<span class="brand-name">Pira Kids 200g</span>
+<span class="brand-price">R$ 5,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('produtos-infantis', 'Mucilon 200g', 7.50)">
+<span class="brand-name">Mucilon 200g</span>
+<span class="brand-price">R$ 7,50</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-produtos-infantis" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-produtos-infantis"></span> - <span id="brand-price-produtos-infantis"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('produtos-infantis')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Esmaltes -->
+<div class="product-card">
+<h3>ESMALTES</h3>
+<div class="product-examples">
+<h4>Escolha o esmalte:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Incolor Tratamento 7,5ML', 5.99)">
+<span class="brand-name">Esmalte Impala Incolor Tratamento 7,5ML</span>
+<span class="brand-price">R$ 5,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Preto Cremoso 8ML', 6.49)">
+<span class="brand-name">Esmalte Impala Preto Cremoso 8ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Verniz Extra Brilho 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Verniz Extra Brilho 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Colorama Incolor Cuidados 8ML', 6.49)">
+<span class="brand-name">Esmalte Colorama Incolor Cuidados 8ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Fluorescente Tom Vivo Violeta 8ML', 6.49)">
+<span class="brand-name">Esmalte Fluorescente Tom Vivo Violeta 8ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Risqué Rebu 8ML', 6.49)">
+<span class="brand-name">Esmalte Risqué Rebu 8ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Amante Perolado 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Amante Perolado 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Leve e Suave 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Leve e Suave 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Devaneio Transparente 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Devaneio Transparente 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Top Pop Transparente 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Top Pop Transparente 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Verniz Super Brilho 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Verniz Super Brilho 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Discreto Transparente 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Discreto Transparente 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Serena Cremoso 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Serena Cremoso 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Risqué Granulado Rosé 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Risqué Granulado Rosé 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Café Café Cremoso 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Café Café Cremoso 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('esmaltes', 'Esmalte Impala Intenso Cremoso 7,5ML', 6.49)">
+<span class="brand-name">Esmalte Impala Intenso Cremoso 7,5ML</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-esmaltes" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-esmaltes"></span> - <span id="brand-price-esmaltes"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('esmaltes')">Adicionar ao Carrinho</button>
+</div>
+</div>
+</div>
+</section>
+
+<section class="categoria" id="bebidas">
+<h2>BEBIDAS</h2>
+
+<div class="products-grid">
+<!-- Refrigerante 200ml -->
+<div class="product-card">
+<h3>REFRIGERANTE 200ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('refrigerante-200ml', 'Coca-Cola lata', 2.50)">
+<span class="brand-name">Coca-Cola lata</span>
+<span class="brand-price">R$ 2,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-200ml', 'Pepsi lata', 2.30)">
+<span class="brand-name">Pepsi lata</span>
+<span class="brand-price">R$ 2,30</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-200ml', 'Guaraná Antarctica', 2.40)">
+<span class="brand-name">Guaraná Antarctica</span>
+<span class="brand-price">R$ 2,40</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-refrigerante-200ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-200ml"></span> - <span id="brand-price-refrigerante-200ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-200ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Refrigerante 220ml -->
+<div class="product-card">
+<h3>REFRIGERANTE LATA 220ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('refrigerante-lata-220ml', 'Coca-Cola lata', 2.80)">
+<span class="brand-name">Coca-Cola lata</span>
+<span class="brand-price">R$ 2,80</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-lata-220ml', 'Fanta Laranja', 2.60)">
+<span class="brand-name">Fanta Laranja</span>
+<span class="brand-price">R$ 2,60</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-lata-220ml', 'Sprite lata', 2.70)">
+<span class="brand-name">Sprite lata</span>
+<span class="brand-price">R$ 2,70</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-refrigerante-lata-220ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-lata-220ml"></span> - <span id="brand-price-refrigerante-lata-220ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-lata-220ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Refrigerante 269ml -->
+<div class="product-card">
+<h3>REFRIGERANTE 269ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('refrigerante-269ml', 'Guaraná Antarctica 269ml', 2.60)">
+<span class="brand-name">Guaraná Antarctica 269ml</span>
+<span class="brand-price">R$ 2,60</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-refrigerante-269ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-269ml"></span> - <span id="brand-price-refrigerante-269ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-269ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Refrigerante 350ml -->
+<div class="product-card">
+<h3>REFRIGERANTE 350ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Coca-Cola 350ml', 3.60)">
+<span class="brand-name">Coca-Cola 350ml</span>
+<span class="brand-price">R$ 3,60</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Coca-Cola Zero 350ml', 3.89)">
+<span class="brand-name">Coca-Cola Zero 350ml</span>
+<span class="brand-price">R$ 3,89</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Fanta Uva 350ml', 3.49)">
+<span class="brand-name">Fanta Uva 350ml</span>
+<span class="brand-price">R$ 3,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Fanta Laranja 350ml', 3.49)">
+<span class="brand-name">Fanta Laranja 350ml</span>
+<span class="brand-price">R$ 3,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Baré 350ml', 3.19)">
+<span class="brand-name">Baré 350ml</span>
+<span class="brand-price">R$ 3,19</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Tuchaua 350ml', 3.19)">
+<span class="brand-name">Tuchaua 350ml</span>
+<span class="brand-price">R$ 3,19</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Guaraná Antarctica 350ml', 3.19)">
+<span class="brand-name">Guaraná Antarctica 350ml</span>
+<span class="brand-price">R$ 3,19</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Sprite 350ml', 3.19)">
+<span class="brand-name">Sprite 350ml</span>
+<span class="brand-price">R$ 3,19</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Soda Refrigerante 350ml', 3.19)">
+<span class="brand-name">Soda Refrigerante 350ml</span>
+<span class="brand-price">R$ 3,19</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-350ml', 'Pepsi Zero 350ml', 3.19)">
+<span class="brand-name">Pepsi Zero 350ml</span>
+<span class="brand-price">R$ 3,19</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-refrigerante-350ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-350ml"></span> - <span id="brand-price-refrigerante-350ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-350ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Refrigerante 500ml -->
+<div class="product-card">
+<h3>REFRIGERANTE 500ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('refrigerante-500ml', 'Alegria Laranja 500ml', 3.49)">
+<span class="brand-name">Alegria Laranja 500ml</span>
+<span class="brand-price">R$ 3,49</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-refrigerante-500ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-500ml"></span> - <span id="brand-price-refrigerante-500ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-500ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Refrigerante Lata 600ml -->
+<div class="product-card">
+<h3>REFRIGERANTE LATA 600ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('refrigerante-lata-600ml', 'Coca-Cola Pet 600ml', 4.39)">
+<span class="brand-name">Coca-Cola Pet 600ml</span>
+<span class="brand-price">R$ 4,39</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-lata-600ml', 'Coca-Cola Zero Pet 600ml', 4.39)">
+<span class="brand-name">Coca-Cola Zero Pet 600ml</span>
+<span class="brand-price">R$ 4,39</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-refrigerante-lata-600ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-lata-600ml"></span> - <span id="brand-price-refrigerante-lata-600ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-lata-600ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Refrigerante 1 Litro -->
+<div class="product-card">
+<h3>REFRIGERANTE 1 LITRO</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('refrigerante-1l', 'Baré Pet 1L', 4.39)">
+<span class="brand-name">Baré Pet 1L</span>
+<span class="brand-price">R$ 4,39</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-1l', 'Coca-Cola Pet 1L', 6.49)">
+<span class="brand-name">Coca-Cola Pet 1L</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-1l', 'Fanta Laranja Pet 1L', 5.50)">
+<span class="brand-name">Fanta Laranja Pet 1L</span>
+<span class="brand-price">R$ 5,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-1l', 'Tuchaua Pet 1L', 4.39)">
+<span class="brand-name">Tuchaua Pet 1L</span>
+<span class="brand-price">R$ 4,39</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-refrigerante-1l" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-1l"></span> - <span id="brand-price-refrigerante-1l"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-1l')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Refrigerante 2 Litros -->
+<div class="product-card">
+<h3>REFRIGERANTE 2 LITROS</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Sprite Pet 2L', 9.99)">
+<span class="brand-name">Sprite Pet 2L</span>
+<span class="brand-price">R$ 9,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Tuchaua Pet 2L', 9.99)">
+<span class="brand-name">Tuchaua Pet 2L</span>
+<span class="brand-price">R$ 9,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Fanta Laranja Pet 2L', 9.99)">
+<span class="brand-name">Fanta Laranja Pet 2L</span>
+<span class="brand-price">R$ 9,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Fanta Uva Pet 2L', 9.99)">
+<span class="brand-name">Fanta Uva Pet 2L</span>
+<span class="brand-price">R$ 9,99</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Coca-Cola Pet 2L', 7.00)">
+<span class="brand-name">Coca-Cola Pet 2L</span>
+<span class="brand-price">R$ 7,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Coca-Cola Zero Pet 2L', 10.29)">
+<span class="brand-name">Coca-Cola Zero Pet 2L</span>
+<span class="brand-price">R$ 10,29</span>
+</div>
+<div class="brand-item" onclick="selectBrand('refrigerante-2l', 'Guaraná Antarctica Pet 2L', 10.29)">
+<span class="brand-name">Guaraná Antarctica Pet 2L</span>
+<span class="brand-price">R$ 10,29</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-refrigerante-2l" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-refrigerante-2l"></span> - <span id="brand-price-refrigerante-2l"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('refrigerante-2l')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Água Mineral 510ml -->
+<div class="product-card">
+<h3>ÁGUA MINERAL 510ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('agua-mineral-510ml', 'Água Cristal 510ml', 2.25)">
+<span class="brand-name">Água Cristal 510ml</span>
+<span class="brand-price">R$ 2,25</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-agua-mineral-510ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-agua-mineral-510ml"></span> - <span id="brand-price-agua-mineral-510ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('agua-mineral-510ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Água Mineral 1,5L -->
+<div class="product-card">
+<h3>ÁGUA MINERAL 1,5L</h3>
+<div class="product-examples">
+<h4>Produtos disponíveis:</h4>
+<p style="text-align: center; color: #666; padding: 20px;">Não há dados disponíveis para esta categoria.</p>
+</div>
+</div>
+
+<!-- Sucos de Pacote 200ml -->
+<div class="product-card">
+<h3>SUCOS DE PACOTE 200ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('sucos-pacote-200ml', 'Maratá Maracujá 200ml', 2.50)">
+<span class="brand-name">Maratá Maracujá 200ml</span>
+<span class="brand-price">R$ 2,50</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-sucos-pacote-200ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-sucos-pacote-200ml"></span> - <span id="brand-price-sucos-pacote-200ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('sucos-pacote-200ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Sucos de Garrafa 500ml -->
+<div class="product-card">
+<h3>SUCOS DE GARRAFA 500ML</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('sucos-garrafa-500ml', 'Alegria Laranja 500ml', 3.49)">
+<span class="brand-name">Alegria Laranja 500ml</span>
+<span class="brand-price">R$ 3,49</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-sucos-garrafa-500ml" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-sucos-garrafa-500ml"></span> - <span id="brand-price-sucos-garrafa-500ml"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('sucos-garrafa-500ml')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Sucos de Caixa 1L -->
+<div class="product-card">
+<h3>SUCOS DE CAIXA 1L</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Del Valle Uva 1L', 5.50)">
+<span class="brand-name">Del Valle Uva 1L</span>
+<span class="brand-price">R$ 5,50</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Maratá Abacaxi 1L', 5.00)">
+<span class="brand-name">Maratá Abacaxi 1L</span>
+<span class="brand-price">R$ 5,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Maratá Caju 1L', 5.00)">
+<span class="brand-name">Maratá Caju 1L</span>
+<span class="brand-price">R$ 5,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Maratá Uva 1L', 5.00)">
+<span class="brand-name">Maratá Uva 1L</span>
+<span class="brand-price">R$ 5,00</span>
+</div>
+<div class="brand-item" onclick="selectBrand('sucos-caixa-1l', 'Maratá Laranja 1L', 5.00)">
+<span class="brand-name">Maratá Laranja 1L</span>
+<span class="brand-price">R$ 5,00</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-sucos-caixa-1l" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-sucos-caixa-1l"></span> - <span id="brand-price-sucos-caixa-1l"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('sucos-caixa-1l')">Adicionar ao Carrinho</button>
+</div>
+</div>
+
+<!-- Sucos de Caixa 1,5L -->
+<div class="product-card">
+<h3>SUCOS DE CAIXA 1,5L</h3>
+<div class="product-examples">
+<h4>Escolha a marca:</h4>
+<div class="brand-selection">
+<div class="brand-item" onclick="selectBrand('sucos-caixa-1-5l', 'Del Valle Laranja 1,5L', 6.49)">
+<span class="brand-name">Del Valle Laranja 1,5L</span>
+<span class="brand-price">R$ 6,49</span>
+</div>
+</div>
+</div>
+<div class="selected-brand" id="selected-sucos-caixa-1-5l" style="display: none;">
+<p><strong>Selecionado:</strong> <span id="brand-name-sucos-caixa-1-5l"></span> - <span id="brand-price-sucos-caixa-1-5l"></span></p>
+<button class="add-to-cart-btn" onclick="addSelectedToCart('sucos-caixa-1-5l')">Adicionar ao Carrinho</button>
+</div>
+</div>
 </div>
 </section>
 </main>
 
 <footer>
-<p>&copy; 2024 CORATAC - Todos os direitos reservados | Entrega rápida e segura</p>
+<p>&copy; 2024 Super Senac Atacado. Todos os direitos reservados.</p>
 </footer>
 </div>
 
 <script>
-// Variáveis globais
+// Sistema de carrinho completo
 let cart = [];
+let cartCount = 0;
 let selectedBrands = {};
-
-// Função para entrar no site
-function enterSite() {
-    document.getElementById('entryScreen').style.display = 'none';
-    document.getElementById('mainContent').classList.add('show');
-}
-
-// Função para mostrar categoria
-function showCategory(categoryId) {
-    // Esconder todas as categorias
-    const categories = document.querySelectorAll('.categoria');
-    categories.forEach(cat => cat.classList.remove('active'));
-    
-    // Mostrar categoria selecionada
-    document.getElementById(categoryId).classList.add('active');
-}
+let selectedPaymentMethod = '';
+let isPCD = false;
+let disabilityType = '';
+let deliveryFee = 10.00;
 
 // Função para selecionar marca
-function selectBrand(productType, brandName, price) {
-    // Remover seleção anterior do mesmo produto
-    const previousSelected = document.querySelector(`#${productType} .brand-item.selected`);
-    if (previousSelected) {
-        previousSelected.classList.remove('selected');
-    }
-    
-    // Adicionar seleção à nova marca
-    event.target.closest('.brand-item').classList.add('selected');
-    
-    // Armazenar seleção
-    selectedBrands[productType] = {
-        name: brandName,
-        price: price
-    };
-    
-    // Mostrar produto selecionado
-    const selectedDiv = document.getElementById(`selected-${productType}`);
-    const nameSpan = document.getElementById(`brand-name-${productType}`);
-    const priceSpan = document.getElementById(`brand-price-${productType}`);
-    
-    if (selectedDiv && nameSpan && priceSpan) {
-        nameSpan.textContent = brandName;
-        priceSpan.textContent = price === 0 ? 'Consultar' : `R$ ${price.toFixed(2)}`;
-        selectedDiv.style.display = 'block';
-    }
+function selectBrand(productId, brandName, price) {
+// Remover seleção anterior do mesmo produto
+const productCard = event.target.closest('.product-card');
+const previousSelected = productCard.querySelector('.brand-item.selected');
+if (previousSelected) {
+previousSelected.classList.remove('selected');
 }
 
-// Função para adicionar produto selecionado ao carrinho
-function addSelectedToCart(productType) {
-    const selected = selectedBrands[productType];
-    if (!selected) {
-        alert('Por favor, selecione uma marca primeiro!');
-        return;
-    }
-    
-    if (selected.price === 0) {
-        alert('Este produto precisa de consulta de preço. Entre em contato pelo WhatsApp!');
-        return;
-    }
-    
-    // Verificar se já existe no carrinho
-    const existingItem = cart.find(item => 
-        item.name === selected.name && item.type === productType
-    );
-    
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            type: productType,
-            name: selected.name,
-            price: selected.price,
-            quantity: 1
-        });
-    }
-    
-    updateCartDisplay();
-    alert(`${selected.name} adicionado ao carrinho!`);
+// Selecionar nova marca
+event.target.closest('.brand-item').classList.add('selected');
+
+// Armazenar seleção
+selectedBrands[productId] = {
+name: brandName,
+price: price
+};
+
+// Mostrar área de seleção
+const selectedArea = document.getElementById(`selected-${productId}`);
+const brandNameSpan = document.getElementById(`brand-name-${productId}`);
+const brandPriceSpan = document.getElementById(`brand-price-${productId}`);
+
+selectedArea.style.display = 'block';
+brandNameSpan.textContent = brandName;
+brandPriceSpan.textContent = `R$ ${price.toFixed(2)}`;
 }
 
-// Função para adicionar produto diretamente ao carrinho
-function addToCart(productType, productName, price) {
-    if (price === 0) {
-        alert('Este produto precisa de consulta de preço. Entre em contato pelo WhatsApp!');
-        return;
-    }
-    
-    // Verificar se já existe no carrinho
-    const existingItem = cart.find(item => 
-        item.name === productName && item.type === productType
-    );
-    
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push({
-            type: productType,
-            name: productName,
-            price: price,
-            quantity: 1
-        });
-    }
-    
-    updateCartDisplay();
-    alert(`${productName} adicionado ao carrinho!`);
+// Função para adicionar marca selecionada ao carrinho
+function addSelectedToCart(productId) {
+const selected = selectedBrands[productId];
+if (!selected) {
+alert('Por favor, selecione uma marca primeiro!');
+return;
 }
 
-// Função para atualizar display do carrinho
+const productName = `${selected.name}`;
+const price = selected.price;
+const existingItem = cart.find(item => item.name === productName);
+
+if (existingItem) {
+existingItem.quantity += 1;
+} else {
+cart.push({
+name: productName,
+price: price,
+quantity: 1
+});
+}
+
+updateCartCount();
+updateCartDisplay();
+
+// Animação de feedback
+const button = event.target;
+const originalText = button.textContent;
+button.textContent = '✓ Adicionado!';
+button.style.background = '#28a745';
+
+setTimeout(() => {
+button.textContent = originalText;
+button.style.background = '#28a745';
+}, 1500);
+
+showNotification(`${productName} adicionado ao carrinho!`);
+}
+
+// Produtos com preços
+const productPrices = {
+'Arroz': 4.90,
+'Macarrão': 3.80,
+'Açúcar': 3.50,
+'Feijão': 7.20,
+'Leite em Pó': 18.90,
+'Achocolatados': 8.90,
+'Leite em Caixa': 4.20,
+'Manteiga': 9.80,
+'Chicletes': 2.50,
+'Ketchup': 6.90,
+'Café': 12.90,
+'Maionese': 7.80,
+'Aveia': 8.90,
+'Biscoitos': 3.50,
+'Azeites': 18.90,
+'Conservas': 3.20,
+'Congelados': 8.90,
+'Creme de Leite': 3.80,
+'Dendê': 8.50,
+'Doces': 4.80,
+'Farinha': 4.20,
+'Fermento': 2.50,
+'Maizena': 4.50,
+'Sal': 2.20,
+'Vela': 1.50,
+'Tortilhas': 8.90,
+'Pacotes de Chocolates': 12.90,
+'Caixas de Chocolates': 45.90,
+'Amaciantes': 8.90,
+'Multiuso / Limpadores': 4.80,
+'Sabão em Pó': 12.90,
+'Água Sanitária': 3.50,
+'Sabão Líquido': 15.90,
+'Inseticidas': 12.90,
+'Utensílios / Acessórios': 2.80,
+'Papel Higiênico': 16.90,
+'Sacos de Lixo': 8.90,
+'Shampoos': 12.90,
+'Condicionadores': 13.50,
+'Máscaras / Tratamentos Capilares': 8.90,
+'Finalizadores / Defrizantes / Séruns': 14.90,
+'Coloração / Tonalizante / OX': 18.90,
+'Sabonetes': 3.50,
+'Hidratantes Corporais': 16.90,
+'Higiene Bucal': 8.90,
+'Cuidados Infantis': 9.80,
+'Desodorantes / Antitranspirantes': 12.90,
+'Esmaltes': 4.50,
+'Perfumes / Colônias': 89.90,
+'Maquiagem / Skincare': 24.90,
+'Refrigerante 200ml': 2.50,
+'Refrigerante Lata 220ml': 2.80,
+'Refrigerante 269ml': 3.20,
+'Refrigerante 350ml': 3.50,
+'Refrigerante 500ml': 4.50,
+'Refrigerante Lata 600ml': 5.20,
+'Refrigerante 1 Litro': 6.90,
+'Refrigerante 2 Litros': 8.90,
+'Água Mineral 510ml': 1.50,
+'Água Mineral 1,5L': 2.20,
+'Água Mineral 2L': 2.90,
+'Sucos de Pacote 200ml': 2.80,
+'Sucos de Garrafa 500ml': 4.20,
+'Sucos de Caixa 1L': 5.90,
+'Sucos de Caixa 1,5L': 7.80
+};
+
+function enterSite() {
+document.getElementById('entryScreen').style.display = 'none';
+document.getElementById('mainContent').classList.add('show');
+}
+
+function showCategory(categoryId) {
+const categories = document.querySelectorAll('.categoria');
+categories.forEach(cat => cat.classList.remove('active'));
+document.getElementById(categoryId).classList.add('active');
+}
+
+function addToCart(productName) {
+const price = productPrices[productName] || 0;
+const existingItem = cart.find(item => item.name === productName);
+
+if (existingItem) {
+existingItem.quantity += 1;
+} else {
+cart.push({
+name: productName,
+price: price,
+quantity: 1
+});
+}
+
+updateCartCount();
+updateCartDisplay();
+
+// Animação de feedback
+const button = event.target;
+const originalText = button.textContent;
+button.textContent = '✓ Adicionado!';
+button.style.background = '#28a745';
+
+setTimeout(() => {
+button.textContent = originalText;
+button.style.background = '#28a745';
+}, 1500);
+
+showNotification(`${productName} adicionado ao carrinho!`);
+}
+
+function updateCartCount() {
+cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+document.getElementById('cartCount').textContent = cartCount;
+}
+
 function updateCartDisplay() {
-    const cartCount = document.getElementById('cartCount');
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
+const cartBody = document.getElementById('cartBody');
+const cartFooter = document.getElementById('cartFooter');
+
+if (cart.length === 0) {
+cartBody.innerHTML = `
+<div class="cart-empty">
+<p>Seu carrinho está vazio</p>
+<p>Adicione produtos para começar suas compras!</p>
+</div>
+`;
+cartFooter.style.display = 'none';
+} else {
+let cartHTML = '';
+let total = 0;
+
+cart.forEach((item, index) => {
+const subtotal = item.price * item.quantity;
+total += subtotal;
+
+cartHTML += `
+<div class="cart-item">
+<div class="item-info">
+<div class="item-name">${item.name}</div>
+<div class="item-price">R$ ${item.price.toFixed(2)}</div>
+<div class="quantity-controls">
+<button class="qty-btn" onclick="decreaseQuantity(${index})" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+<span class="quantity-display">${item.quantity}</span>
+<button class="qty-btn" onclick="increaseQuantity(${index})">+</button>
+</div>
+</div>
+<div class="item-subtotal">R$ ${subtotal.toFixed(2)}</div>
+<button class="remove-item" onclick="removeItem(${index})">Remover</button>
+</div>
+`;
+});
+
+cartBody.innerHTML = cartHTML;
+cartFooter.style.display = 'block';
+document.getElementById('cartTotal').textContent = `R$ ${total.toFixed(2)}`;
+}
 }
 
-// Função para abrir carrinho
-function openCart() {
-    const modal = document.getElementById('cartModal');
-    const cartBody = document.getElementById('cartBody');
-    const cartFooter = document.getElementById('cartFooter');
-    
-    if (cart.length === 0) {
-        cartBody.innerHTML = `
-            <div class="cart-empty">
-                <p>Seu carrinho está vazio</p>
-                <p>Adicione produtos para começar suas compras!</p>
-            </div>
-        `;
-        cartFooter.style.display = 'none';
-    } else {
-        let cartHTML = '';
-        let total = 0;
-        
-        cart.forEach((item, index) => {
-            const subtotal = item.price * item.quantity;
-            total += subtotal;
-            
-            cartHTML += `
-                <div class="cart-item">
-                    <div class="item-info">
-                        <div class="item-name">${item.name}</div>
-                        <div class="item-price">R$ ${item.price.toFixed(2)} cada</div>
-                        <div class="quantity-controls">
-                            <button class="qty-btn" onclick="updateQuantity(${index}, -1)" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
-                            <span class="quantity-display">${item.quantity}</span>
-                            <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="item-subtotal">R$ ${subtotal.toFixed(2)}</div>
-                    <button class="remove-item" onclick="removeItem(${index})">Remover</button>
-                </div>
-            `;
-        });
-        
-        cartBody.innerHTML = cartHTML;
-        document.getElementById('cartTotal').textContent = `R$ ${total.toFixed(2)}`;
-        cartFooter.style.display = 'block';
-    }
-    
-    modal.classList.add('show');
+function increaseQuantity(index) {
+cart[index].quantity += 1;
+updateCartCount();
+updateCartDisplay();
 }
 
-// Função para fechar carrinho
-function closeCart() {
-    document.getElementById('cartModal').classList.remove('show');
+function decreaseQuantity(index) {
+if (cart[index].quantity > 1) {
+cart[index].quantity -= 1;
+updateCartCount();
+updateCartDisplay();
+}
 }
 
-// Função para atualizar quantidade
-function updateQuantity(index, change) {
-    cart[index].quantity += change;
-    if (cart[index].quantity <= 0) {
-        cart.splice(index, 1);
-    }
-    updateCartDisplay();
-    openCart(); // Reabrir para atualizar
-}
-
-// Função para remover item
 function removeItem(index) {
-    cart.splice(index, 1);
-    updateCartDisplay();
-    openCart(); // Reabrir para atualizar
+cart.splice(index, 1);
+updateCartCount();
+updateCartDisplay();
+showNotification('Item removido do carrinho!');
 }
 
-// Função para limpar carrinho
 function clearCart() {
-    if (confirm('Tem certeza que deseja esvaziar o carrinho?')) {
-        cart = [];
-        updateCartDisplay();
-        openCart(); // Reabrir para atualizar
-    }
+if (confirm('Tem certeza que deseja esvaziar o carrinho?')) {
+cart = [];
+updateCartCount();
+updateCartDisplay();
+showNotification('Carrinho esvaziado!');
+}
 }
 
-// Função para abrir checkout
+function openCart() {
+updateCartDisplay();
+document.getElementById('cartModal').classList.add('show');
+}
+
+function closeCart() {
+document.getElementById('cartModal').classList.remove('show');
+}
+
 function openCheckout() {
-    if (cart.length === 0) {
-        alert('Seu carrinho está vazio!');
-        return;
-    }
-    
-    closeCart();
-    
-    // Calcular total
-    const total = cart.reduce((sum, item) => sum * item.price * item.quantity, 0);
-    
-    // Preencher resumo do pedido
-    let summaryHTML = '';
-    cart.forEach(item => {
-        const subtotal = item.price * item.quantity;
-        summaryHTML += `
-            <div class="summary-item">
-                <span>${item.name} (${item.quantity}x)</span>
-                <span>R$ ${subtotal.toFixed(2)}</span>
-            </div>
-        `;
-    });
-    
-    document.getElementById('orderSummary').innerHTML = summaryHTML;
-    document.getElementById('orderTotal').textContent = `R$ ${total.toFixed(2)}`;
-    
-    document.getElementById('checkoutModal').classList.add('show');
+if (cart.length === 0) {
+alert('Seu carrinho está vazio!');
+return;
 }
 
-// Função para fechar checkout
+updateOrderSummary();
+closeCart();
+document.getElementById('checkoutModal').classList.add('show');
+}
+
 function closeCheckout() {
-    document.getElementById('checkoutModal').classList.remove('show');
+document.getElementById('checkoutModal').classList.remove('show');
 }
 
-// Função para selecionar método de pagamento
+function updateOrderSummary() {
+const orderSummary = document.getElementById('orderSummary');
+const deliveryFeeElement = document.getElementById('deliveryFee');
+const orderTotal = document.getElementById('orderTotal');
+
+let summaryHTML = '';
+let subtotal = 0;
+
+cart.forEach(item => {
+const itemSubtotal = item.price * item.quantity;
+subtotal += itemSubtotal;
+summaryHTML += `
+<div class="summary-item">
+<span>${item.name} (${item.quantity}x)</span>
+<span>R$ ${itemSubtotal.toFixed(2)}</span>
+</div>
+`;
+});
+
+const currentDeliveryFee = isPCD ? 0 : deliveryFee;
+const total = subtotal + currentDeliveryFee;
+
+summaryHTML += `
+<div class="summary-item">
+<span>Subtotal:</span>
+<span>R$ ${subtotal.toFixed(2)}</span>
+</div>
+`;
+
+orderSummary.innerHTML = summaryHTML;
+deliveryFeeElement.textContent = currentDeliveryFee > 0 ? `R$ ${currentDeliveryFee.toFixed(2)}` : 'GRÁTIS (PCD)';
+orderTotal.textContent = `R$ ${total.toFixed(2)}`;
+}
+
 function selectPayment(method) {
-    // Remover seleção anterior
-    document.querySelectorAll('.payment-method').forEach(pm => pm.classList.remove('selected'));
-    
-    // Selecionar novo método
-    event.target.closest('.payment-method').classList.add('selected');
-    document.getElementById(method).checked = true;
-    
-    // Mostrar/esconder formulários
-    document.getElementById('cardForm').style.display = (method === 'credit' || method === 'debit') ? 'block' : 'none';
-    document.getElementById('pixForm').style.display = method === 'pix' ? 'block' : 'none';
+// Remover seleção anterior
+document.querySelectorAll('.payment-method').forEach(pm => {
+pm.classList.remove('selected');
+});
+
+// Selecionar método atual
+document.querySelector(`#${method}`).checked = true;
+document.querySelector(`#${method}`).closest('.payment-method').classList.add('selected');
+selectedPaymentMethod = method;
+
+// Mostrar/esconder formulários
+const cardForm = document.getElementById('cardForm');
+const pixForm = document.getElementById('pixForm');
+
+if (method === 'credit' || method === 'debit') {
+cardForm.style.display = 'block';
+pixForm.style.display = 'none';
+} else if (method === 'pix') {
+cardForm.style.display = 'none';
+pixForm.style.display = 'block';
+}
 }
 
-// Função para completar pedido
-function completeOrder() {
-    const selectedPayment = document.querySelector('input[name="payment"]:checked');
-    
-    if (!selectedPayment) {
+// Variáveis PCD
+// ... (já declaradas globalmente acima)
+
+// Função para prosseguir para verificação PCD
+function proceedToPCDVerification() {
+    // Validar campos obrigatórios (adicionar campos de entrega se necessário, mas como não estão no HTML atual, assumimos que são opcionais ou implícitos)
+    if (!selectedPaymentMethod) {
         alert('Por favor, selecione uma forma de pagamento!');
         return;
     }
     
     // Validar campos do cartão se necessário
-    if (selectedPayment.value === 'credit' || selectedPayment.value === 'debit') {
-        const cardNumber = document.getElementById('cardNumber').value;
-        const cardName = document.getElementById('cardName').value;
-        const cardExpiry = document.getElementById('cardExpiry').value;
-        const cardCvv = document.getElementById('cardCvv').value;
+    if (selectedPaymentMethod === 'credit' || selectedPaymentMethod === 'debit') {
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const cardName = document.getElementById('cardName').value.trim();
+        const cardExpiry = document.getElementById('cardExpiry').value.trim();
+        const cardCvv = document.getElementById('cardCvv').value.trim();
         
         if (!cardNumber || !cardName || !cardExpiry || !cardCvv) {
             alert('Por favor, preencha todos os dados do cartão!');
@@ -3364,48 +4692,241 @@ function completeOrder() {
         }
     }
     
-    // Simular processamento
-    alert('Pedido realizado com sucesso! Você receberá a confirmação em breve.');
-    
-    // Limpar carrinho e fechar modal
-    cart = [];
-    updateCartDisplay();
+    // Fechar checkout e abrir modal PCD
     closeCheckout();
+    document.getElementById('pcdModal').classList.add('show');
+}
+
+// Função para selecionar opção PCD
+function selectPCDOption(option) {
+    // Remover seleção anterior
+    document.querySelectorAll('.pcd-option').forEach(opt => opt.classList.remove('selected'));
+    
+    // Adicionar seleção atual
+    event.target.closest('.pcd-option').classList.add('selected');
+    
+    // Marcar radio button
+    document.getElementById(`pcd-${option}`).checked = true;
+    isPCD = option === 'yes';
+    
+    // Mostrar/esconder seleção de deficiência
+    const disabilitySelection = document.getElementById('disabilitySelection');
+    if (isPCD) {
+        disabilitySelection.classList.add('show');
+        document.getElementById('confirmPCDBtn').disabled = true;
+    } else {
+        disabilitySelection.classList.remove('show');
+        document.getElementById('confirmPCDBtn').disabled = false;
+        disabilityType = '';
+    }
+}
+
+// Função para selecionar tipo de deficiência
+function selectDisability(type) {
+    // Remover seleção anterior
+    document.querySelectorAll('.disability-option').forEach(opt => opt.classList.remove('selected'));
+    
+    // Adicionar seleção atual
+    event.target.closest('.disability-option').classList.add('selected');
+    
+    // Marcar radio button
+    document.getElementById(`disability-${type}`).checked = true;
+    disabilityType = type;
+    
+    // Habilitar botão de confirmação
+    document.getElementById('confirmPCDBtn').disabled = false;
+}
+
+// Função para confirmar seleção PCD
+function confirmPCDSelection() {
+    if (isPCD && !disabilityType) {
+        alert('Por favor, selecione o tipo de deficiência!');
+        return;
+    }
+    
+    // Atualizar taxa de entrega
+    deliveryFee = isPCD ? 0 : 10.00;
+    
+    // Fechar modal PCD
+    closePCDModal();
+    
+    // Finalizar pedido
+    completeOrder();
+}
+
+// Função para fechar modal PCD
+function closePCDModal() {
+    document.getElementById('pcdModal').classList.remove('show');
+}
+
+function completeOrder() {
+const selectedPayment = document.querySelector('input[name="payment"]:checked');
+
+if (!selectedPayment) {
+alert('Por favor, selecione uma forma de pagamento!');
+return;
+}
+
+const paymentMethod = selectedPayment.value;
+
+if (paymentMethod === 'credit' || paymentMethod === 'debit') {
+const cardNumber = document.getElementById('cardNumber').value;
+const cardName = document.getElementById('cardName').value;
+const cardExpiry = document.getElementById('cardExpiry').value;
+const cardCvv = document.getElementById('cardCvv').value;
+
+if (!cardNumber || !cardName || !cardExpiry || !cardCvv) {
+alert('Por favor, preencha todos os dados do cartão!');
+return;
+}
+}
+
+// Simular processamento do pedido
+const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+const currentDeliveryFee = isPCD ? 0 : deliveryFee;
+const total = subtotal + currentDeliveryFee;
+
+let pcdInfo = '';
+if (isPCD) {
+pcdInfo = `\nPCD: ${disabilityType.toUpperCase()} - Entrega GRÁTIS!`;
+}
+
+alert(`Pedido confirmado com sucesso!\n\nSubtotal: R$ ${subtotal.toFixed(2)}\nTaxa de Entrega: ${currentDeliveryFee > 0 ? `R$ ${currentDeliveryFee.toFixed(2)}` : 'GRÁTIS'}${pcdInfo}\n\nTotal: R$ ${total.toFixed(2)}\nForma de pagamento: ${getPaymentMethodName(paymentMethod)}\n\nObrigado pela preferência!`);
+
+// Limpar carrinho e fechar modais
+cart = [];
+updateCartCount();
+updateCartDisplay();
+closeCheckout();
+}
+
+function getPaymentMethodName(method) {
+switch(method) {
+case 'credit': return 'Cartão de Crédito';
+case 'debit': return 'Cartão de Débito';
+case 'pix': return 'PIX';
+default: return 'Não informado';
+}
+}
+
+function showNotification(message) {
+const notification = document.createElement('div');
+notification.textContent = message;
+notification.style.cssText = `
+position: fixed;
+top: 100px;
+right: 20px;
+background: #28a745;
+color: white;
+padding: 15px 20px;
+border-radius: 8px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+z-index: 1002;
+font-weight: bold;
+animation: slideIn 0.3s ease;
+`;
+
+document.body.appendChild(notification);
+
+setTimeout(() => {
+notification.style.animation = 'slideOut 0.3s ease';
+setTimeout(() => {
+if (document.body.contains(notification)) {
+document.body.removeChild(notification);
+}
+}, 300);
+}, 3000);
 }
 
 // Formatação automática dos campos do cartão
 document.addEventListener('DOMContentLoaded', function() {
-    const cardNumber = document.getElementById('cardNumber');
-    const cardExpiry = document.getElementById('cardExpiry');
-    
-    if (cardNumber) {
-        cardNumber.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
-            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-            e.target.value = formattedValue;
-        });
-    }
-    
-    if (cardExpiry) {
-        cardExpiry.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 2) {
-                value = value.substring(0,2) + '/' + value.substring(2,4);
-            }
-            e.target.value = value;
-        });
-    }
+const cardNumber = document.getElementById('cardNumber');
+const cardExpiry = document.getElementById('cardExpiry');
+
+if (cardNumber) {
+cardNumber.addEventListener('input', function(e) {
+let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+e.target.value = formattedValue;
+});
+}
+
+if (cardExpiry) {
+cardExpiry.addEventListener('input', function(e) {
+let value = e.target.value.replace(/\D/g, '');
+if (value.length >= 2) {
+value = value.substring(0,2) + '/' + value.substring(2,4);
+}
+e.target.value = value;
+});
+}
 });
 
 // Fechar modais clicando fora
 document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('cart-modal')) {
-        closeCart();
-    }
-    if (e.target.classList.contains('checkout-modal')) {
-        closeCheckout();
-    }
+if (e.target.classList.contains('cart-modal')) {
+closeCart();
+}
+if (e.target.classList.contains('checkout-modal')) {
+closeCheckout();
+}
+if (e.target.classList.contains('pcd-modal')) {
+closePCDModal();
+}
 });
+
+// Adicionar estilos de animação
+const style = document.createElement('style');
+style.textContent = `
+@keyframes slideIn {
+from { transform: translateX(100%); opacity: 0; }
+to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+from { transform: translateX(0); opacity: 1; }
+to { transform: translateX(100%); opacity: 0; }
+}
+`;
+document.head.appendChild(style);
 </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9883caf1777c8461',t:'MTc1OTQwMzg0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
 </html>
